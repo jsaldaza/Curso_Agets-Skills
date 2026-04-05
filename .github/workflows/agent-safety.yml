@@ -1,0 +1,73 @@
+name: agent-safety
+
+on:
+  pull_request:
+  push:
+    branches:
+      - "**"
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Scan for dangerous patterns
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          patterns='(rm -rf|git push --force|curl .*\\| *sh|wget .*\\| *sh|TOKEN=|API_KEY=|Bypass Approvals)'
+          exclude_args=(
+            --exclude-dir=.git
+            --exclude-dir=node_modules
+            --exclude-dir=dist
+            --exclude-dir=build
+            --exclude-dir=coverage
+            --exclude-dir=.venv
+            --exclude-dir=venv
+            --exclude-dir=env
+            --exclude=package-lock.json
+            --exclude=yarn.lock
+            --exclude=pnpm-lock.yaml
+            --exclude=*.png
+            --exclude=*.jpg
+            --exclude=*.jpeg
+            --exclude=*.gif
+            --exclude=*.webp
+            --exclude=*.pdf
+          )
+
+          if grep -RInE "${patterns}" . "${exclude_args[@]}"; then
+            echo "Potentially dangerous pattern detected." >&2
+            exit 1
+          fi
+
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run validation workflow
+        run: npm run validate
+
+      - name: Run skills idempotence checks
+        run: python tests/test_skills_idempotence.py

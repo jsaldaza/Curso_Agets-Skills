@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skill Index</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <nav class="site-nav" aria-label="Navegación del curso">
+      <div class="site-nav-inner">
+        <a class="site-nav-link site-nav-home" href="/index.html">🏠 Inicio</a>
+        <span class="site-nav-sep" aria-hidden="true">›</span>
+        <a class="site-nav-link" href="/repo-explorer.html">Explorador</a>
+        <span class="site-nav-sep" aria-hidden="true">›</span>
+        <a class="site-nav-link is-active" href="/skills.html">Skill Lab</a>
+        <span class="site-nav-sep" aria-hidden="true">›</span>
+        <a class="site-nav-link" href="/glossary.html">Glosario</a>
+        <span class="site-nav-sep" aria-hidden="true">›</span>
+        <a class="site-nav-link" href="/final-assessment.html">Evaluación</a>
+      </div>
+    </nav>
+    <header class="hero">
+      <a class="link-home" id="skills-back-home" href="/index.html">← Volver al inicio</a>
+      <p class="badge" id="skills-badge">Skill Explorer</p>
+      <h1 id="skills-title">Índice de skills del workflow</h1>
+      <p id="skills-subtitle">Explora cada skill, su archivo, propósito, errores comunes y cómo usarlo en el flujo real.</p>
+      <div class="hero-actions">
+        <label for="language-switch" class="module-meta" id="language-label">Idioma</label>
+        <select id="language-switch" class="language-select">
+          <option value="es">Español</option>
+          <option value="en">English</option>
+        </select>
+      </div>
+    </header>
+
+    <main>
+      <section class="panel">
+        <h2 id="skills-list-title">Skills disponibles</h2>
+        <div class="skills-lab-layout">
+          <aside class="skills-sidebar">
+            <div id="skills-filter-row" class="filter-row" aria-label="Filtros de skill"></div>
+            <input id="skills-search" class="text-input" type="search" placeholder="Buscar skill o palabra clave" aria-label="Buscar skill" />
+            <nav id="skills-menu" class="skills-menu" aria-label="Menú de skills"></nav>
+          </aside>
+          <article id="skill-detail" class="skill-detail" aria-live="polite"></article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p id="skills-footer">Cada skill reduce incertidumbre cuando se usa en el momento correcto.</p>
+    </footer>
+
+    <script type="module" src="/skills.js"></script>
+  </body>
+</html>

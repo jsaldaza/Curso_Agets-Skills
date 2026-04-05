@@ -1,0 +1,83 @@
+[
+  {
+    "id": "m0",
+    "order": 0,
+    "title": "AI Agent Fundamentals",
+    "level": "Beginner",
+    "durationMinutes": 18,
+    "milestone": "Understand what an agent is and how to reason about input, process, and output.",
+    "summary": "What an agent is, what it is not, and how to reason about input/output without jargon."
+  },
+  {
+    "id": "m1",
+    "order": 1,
+    "title": "Skills and Responsibilities",
+    "level": "Beginner",
+    "durationMinutes": 22,
+    "milestone": "Distinguish roles and avoid mixing planning, QA, and development.",
+    "summary": "How to separate planning, development, testing, and review to reduce errors."
+  },
+  {
+    "id": "m2",
+    "order": 2,
+    "title": "Full Template Workflow",
+    "level": "Intermediate",
+    "durationMinutes": 30,
+    "milestone": "Walk through the official workflow from idea to delivery with traceability.",
+    "summary": "Path from planner → qa-strategy → dev → reviewer using real repository examples."
+  },
+  {
+    "id": "m3",
+    "order": 3,
+    "title": "Skill Lab I (00, 10, 20)",
+    "level": "Intermediate",
+    "durationMinutes": 35,
+    "milestone": "Master profile, planning, and safe changes before implementing complex features.",
+    "summary": "Granular explanation of 00-project-profile, 10-plan-first, and 20-safe-changes with practical examples."
+  },
+  {
+    "id": "m4",
+    "order": 4,
+    "title": "Skill Lab II (30, 40)",
+    "level": "Advanced",
+    "durationMinutes": 28,
+    "milestone": "Apply structured review and testing strategy to close the quality cycle.",
+    "summary": "Detailed explanation of 30-code-review and 40-tests to validate delivery with confidence."
+  },
+  {
+    "id": "m5",
+    "order": 5,
+    "title": "Meta Session · How chat interprets .md files",
+    "level": "Advanced",
+    "durationMinutes": 32,
+    "milestone": "Understand how AGENTS.md, SKILL.md, and instructions guide agent behavior.",
+    "summary": "Practical explanation of how chat prioritizes and applies markdown rules in the workflow."
+  },
+  {
+    "id": "m6",
+    "order": 6,
+    "title": ".agents architecture (roles and skills)",
+    "level": "Advanced",
+    "durationMinutes": 34,
+    "milestone": "Understand how conceptual agents and skills are organized in the .agents layer.",
+    "summary": "Walk through .agents/*.agent.md, AGENT_MAPPING, and skills to explain purpose, dependencies, and practical usage."
+  },
+  {
+    "id": "m7",
+    "order": 7,
+    "title": ".codex architecture (runtime execution)",
+    "level": "Advanced",
+    "durationMinutes": 26,
+    "milestone": "Distinguish conceptual vs runtime layers and the role of builder/planner/qa/reviewer/security.",
+    "summary": "Explains .codex/agents/*.toml as runtime configuration and its connection to .agents intent."
+  },
+  {
+    "id": "m8",
+    "order": 8,
+    "title": "Root markdowns as governance system",
+    "level": "Advanced",
+    "durationMinutes": 30,
+    "milestone": "Apply AGENTS.md, AGENTS_CHANGELOG, AI_WORKFLOW, and SYSTEM_OVERVIEW as a stable decision framework.",
+    "summary": "Integrated session on root repository documents and how to preserve traceability, change control, and workflow safety."
+  }
+]

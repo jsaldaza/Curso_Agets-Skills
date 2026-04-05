@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Explorador del repositorio</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <nav class="site-nav" aria-label="Navegación del curso">
+      <div class="site-nav-inner">
+        <a class="site-nav-link site-nav-home" href="/index.html">🏠 Inicio</a>
+        <span class="site-nav-sep" aria-hidden="true">›</span>
+        <a class="site-nav-link is-active" href="/repo-explorer.html">Explorador</a>
+        <span class="site-nav-sep" aria-hidden="true">›</span>
+        <a class="site-nav-link" href="/skills.html">Skill Lab</a>
+        <span class="site-nav-sep" aria-hidden="true">›</span>
+        <a class="site-nav-link" href="/glossary.html">Glosario</a>
+        <span class="site-nav-sep" aria-hidden="true">›</span>
+        <a class="site-nav-link" href="/final-assessment.html">Evaluación</a>
+      </div>
+    </nav>
+    <header class="hero">
+      <a class="link-home" id="repo-back-home" href="/index.html">← Volver al inicio</a>
+      <p class="badge" id="repo-badge">Explorador del repositorio</p>
+      <h1 id="repo-title">Mapa navegable del conocimiento del repo</h1>
+      <p id="repo-subtitle">Explora .agents, .codex y los markdowns raíz con una estructura incremental y explicaciones prácticas.</p>
+      <div class="hero-actions">
+        <label for="language-switch" class="module-meta" id="language-label">Idioma</label>
+        <select id="language-switch" class="language-select">
+          <option value="es">Español</option>
+          <option value="en">English</option>
+        </select>
+      </div>
+    </header>
+
+    <main>
+      <section class="panel">
+        <h2 id="repo-section-title">Árbol del repositorio</h2>
+        <div class="repo-explorer-layout">
+          <aside class="repo-tree-panel">
+            <nav id="repo-tree" class="repo-tree" aria-label="Árbol del repositorio"></nav>
+          </aside>
+          <article id="repo-detail" class="repo-detail" aria-live="polite"></article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p id="repo-footer">Entender la estructura del repo acelera el onboarding y evita errores de interpretación.</p>
+    </footer>
+
+    <script type="module" src="/repo-explorer.js"></script>
+  </body>
+</html>

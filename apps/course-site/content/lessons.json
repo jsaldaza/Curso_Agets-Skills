@@ -1,0 +1,692 @@
+[
+  {
+    "moduleId": "m0",
+    "title": "Módulo 0 · Fundamentos de agentes AI",
+    "objective": "Entender qué es un agente AI, cómo procesa una tarea y cómo explicarlo sin jerga técnica.",
+    "quiz": {
+      "description": "Responde estas preguntas para validar que ya entiendes la idea base de un agente.",
+      "questions": [
+        {
+          "prompt": "¿Qué hace un agente AI de forma más precisa?",
+          "options": [
+            "Adivina sin contexto y devuelve magia",
+            "Recibe un objetivo, razona y actúa con herramientas permitidas",
+            "Solo genera imágenes automáticamente"
+          ],
+          "correctIndex": 1,
+          "explanation": "La idea central del curso es que un agente trabaja con objetivo, contexto, razonamiento y acciones permitidas."
+        },
+        {
+          "prompt": "¿Cuál es el mejor punto de inicio según este curso?",
+          "options": [
+            "Empezar escribiendo código de una vez",
+            "Primero entender el problema y planificar",
+            "Saltar directo a producción"
+          ],
+          "correctIndex": 1,
+          "explanation": "El template insiste en entender el problema y planificar antes de tocar código para evitar retrabajo."
+        }
+      ]
+    },
+    "sections": [
+      {
+        "heading": "¿Qué es un agente AI?",
+        "paragraphs": [
+          "Un agente AI es un sistema que recibe un objetivo, piensa pasos para resolverlo y ejecuta acciones permitidas.",
+          "No es magia: funciona mejor cuando le das instrucciones claras, contexto y criterios de calidad."
+        ],
+        "bullets": [
+          "Entrada: objetivo y contexto",
+          "Proceso: razonamiento + reglas",
+          "Salida: resultado verificable"
+        ]
+      },
+      {
+        "heading": "Anatomía de un agente (diagrama)",
+        "paragraphs": [
+          "Mira este mapa 2D para entender las piezas mínimas de un agente y cómo se conectan."
+        ],
+        "diagram": "flowchart TD\n  U[Usuario] --> I[Instrucciones]\n  I --> C[Contexto]\n  C --> R[Razonamiento]\n  R --> T[Herramientas permitidas]\n  T --> O[Salida]\n  O --> V[Validación]"
+      },
+      {
+        "heading": "Ciclo práctico de trabajo",
+        "paragraphs": [
+          "Para trabajar bien, no se empieza por código; se empieza por comprensión y plan.",
+          "Este ciclo te ayuda a evitar retrabajo y errores difíciles de detectar tarde."
+        ],
+        "diagram": "flowchart LR\n  A[Entender problema] --> B[Planificar]\n  B --> C[Implementar pequeño]\n  C --> D[Probar]\n  D --> E[Revisar]\n  E --> F{¿Cumple objetivo?}\n  F -- No --> B\n  F -- Sí --> G[Entregar]"
+      }
+    ]
+  },
+  {
+    "moduleId": "m1",
+    "title": "Módulo 1 · Skills y responsabilidades",
+    "objective": "Separar roles para que planificación, desarrollo y QA no se mezclen.",
+    "quiz": {
+      "description": "Comprueba si ya distingues las responsabilidades entre skills.",
+      "questions": [
+        {
+          "prompt": "¿Qué skill se enfoca en definir cobertura y casos críticos?",
+          "options": [
+            "planner",
+            "qa-strategy",
+            "reviewer"
+          ],
+          "correctIndex": 1,
+          "explanation": "`qa-strategy` define el mapa de validación: happy path, edge cases y negativos importantes."
+        },
+        {
+          "prompt": "¿Cuál es un anti-patrón claro?",
+          "options": [
+            "Validar antes de cerrar una iteración",
+            "Hacer cambios pequeños y verificables",
+            "Empezar por código sin plan"
+          ],
+          "correctIndex": 2,
+          "explanation": "Empezar por código sin plan rompe el workflow y hace más probable mezclar responsabilidades y errores."
+        }
+      ]
+    },
+    "sections": [
+      {
+        "heading": "Por qué separar responsabilidades",
+        "paragraphs": [
+          "Cuando un mismo flujo mezcla todo (plan, código, pruebas, revisión), se disparan errores y retrabajo.",
+          "Usar skills por responsabilidad te permite pensar mejor, validar antes y detectar riesgos más temprano."
+        ],
+        "bullets": [
+          "planner: aclara objetivo y límites",
+          "qa-strategy: define cobertura y casos críticos",
+          "dev: implementa cambios pequeños y seguros",
+          "reviewer: analiza calidad y mantenibilidad"
+        ]
+      },
+      {
+        "heading": "Interacción entre skills (diagrama)",
+        "paragraphs": [
+          "Este mapa 2D muestra qué entrega cada rol y cómo el siguiente lo usa como entrada."
+        ],
+        "diagram": "flowchart TB\n  A[planner] -->|Plan + riesgos| B[qa-strategy]\n  B -->|Cobertura + casos| C[dev]\n  C -->|Cambio + pruebas| D[reviewer]\n  D -->|Hallazgos| E[qa-regression]\n  E -->|Estado final| F[release]"
+      },
+      {
+        "heading": "Anti-patrones a evitar",
+        "paragraphs": [
+          "Hay errores comunes cuando se ignora el workflow. Esta lista te ayuda a detectarlos rápido."
+        ],
+        "bullets": [
+          "Empezar por código sin plan",
+          "No definir pruebas antes de implementar",
+          "Hacer cambios masivos sin checkpoints",
+          "Dar por bueno algo sin revisión externa"
+        ]
+      },
+      {
+        "heading": "Checklist operativo (diagrama)",
+        "paragraphs": [
+          "Este flujo corto te sirve como checklist de ejecución diaria."
+        ],
+        "diagram": "flowchart LR\n  A[Objetivo claro] --> B[Plan corto]\n  B --> C[Casos QA]\n  C --> D[Implementación]\n  D --> E[Tests]\n  E --> F[Review]\n  F --> G[Documento y entrega]"
+      }
+    ]
+  },
+  {
+    "moduleId": "m2",
+    "title": "Módulo 2 · Flujo completo",
+    "objective": "Recorrer el workflow del template con ejemplos reales.",
+    "quiz": {
+      "description": "Valida que ya puedes seguir el flujo end-to-end sin perder trazabilidad.",
+      "questions": [
+        {
+          "prompt": "¿Qué fase viene justo después de planner en el flujo oficial?",
+          "options": [
+            "qa-strategy",
+            "reviewer",
+            "qa-regression"
+          ],
+          "correctIndex": 0,
+          "explanation": "Después de `planner`, `qa-strategy` toma el plan y define qué validar antes de implementar."
+        },
+        {
+          "prompt": "¿Qué produce dev para que el reviewer pueda trabajar mejor?",
+          "options": [
+            "Código funcional y tests incrementales",
+            "Solo un diagrama bonito",
+            "Únicamente preguntas abiertas"
+          ],
+          "correctIndex": 0,
+          "explanation": "El reviewer necesita evidencia concreta: implementación funcionando y pruebas que muestren el comportamiento esperado."
+        }
+      ]
+    },
+    "sections": [
+      {
+        "heading": "Mapa de ejecución end-to-end",
+        "paragraphs": [
+          "Este módulo conecta todas las piezas para que veas cómo una idea se convierte en entrega confiable.",
+          "La clave es mantener trazabilidad: cada fase produce algo que la siguiente consume."
+        ],
+        "diagram": "flowchart LR\n  A[Requerimiento] --> B[planner]\n  B --> C[qa-strategy]\n  C --> D[dev]\n  D --> E[qa-functional / qa-api]\n  E --> F[reviewer]\n  F --> G[qa-regression]\n  G --> H[Release candidate]"
+      },
+      {
+        "heading": "Simulador interactivo del workflow",
+        "paragraphs": [
+          "Usa este simulador para recorrer el flujo en modo práctico. Cada paso muestra actor, acción y salida esperada."
+        ],
+        "simulator": {
+          "title": "Simulador: de idea a entrega",
+          "description": "Avanza paso a paso para entender cómo se pasan resultados entre roles.",
+          "steps": [
+            {
+              "actor": "planner",
+              "action": "Aclara objetivo, supuestos y riesgos principales.",
+              "output": "Plan validado con alcance y prioridades."
+            },
+            {
+              "actor": "qa-strategy",
+              "action": "Define cobertura: happy path, negativos y edge cases.",
+              "output": "Checklist de validación y pruebas críticas."
+            },
+            {
+              "actor": "dev",
+              "action": "Implementa cambios pequeños y verificables.",
+              "output": "Código funcional + tests incrementales."
+            },
+            {
+              "actor": "reviewer",
+              "action": "Evalúa calidad, mantenibilidad y riesgos.",
+              "output": "Lista de hallazgos y mejoras requeridas."
+            },
+            {
+              "actor": "qa-regression",
+              "action": "Valida que lo nuevo no rompa lo existente.",
+              "output": "Aprobación final para liberar."
+            }
+          ]
+        }
+      },
+      {
+        "heading": "Indicadores de salud del flujo",
+        "paragraphs": [
+          "Estos indicadores te ayudan a saber si el workflow está funcionando bien en la práctica."
+        ],
+        "bullets": [
+          "Se cumplen tests antes de cerrar iteración",
+          "Cada cambio tiene razón y evidencia de validación",
+          "La documentación refleja lo implementado",
+          "No hay saltos de fase sin justificación"
+        ]
+      }
+    ]
+  },
+  {
+    "moduleId": "m3",
+    "title": "Módulo 3 · Skill Lab I (00, 10, 20)",
+    "objective": "Entender y aplicar con detalle 00-project-profile, 10-plan-first y 20-safe-changes.",
+    "quiz": {
+      "description": "Comprueba que ya distingues el propósito operativo de cada skill base.",
+      "questions": [
+        {
+          "prompt": "¿Cuál es el objetivo principal de 00-project-profile?",
+          "options": [
+            "Guardar contexto de stack, comandos y restricciones para los demás skills",
+            "Reemplazar todas las pruebas automáticas",
+            "Definir arquitectura de microservicios obligatoria"
+          ],
+          "correctIndex": 0,
+          "explanation": "00-project-profile actúa como fuente compartida para comandos, stack y límites del proyecto."
+        },
+        {
+          "prompt": "Según 10-plan-first, ¿qué debe existir antes de editar código?",
+          "options": [
+            "Un plan concreto con supuestos, riesgos, archivos y verificación",
+            "Solo una intuición rápida",
+            "Un refactor masivo de estilo"
+          ],
+          "correctIndex": 0,
+          "explanation": "10-plan-first exige una estructura de salida para planear antes de implementar."
+        },
+        {
+          "prompt": "¿Qué anti-patrón evita 20-safe-changes?",
+          "options": [
+            "Cambiar muchos archivos no relacionados en un solo paso",
+            "Hacer validación incremental",
+            "Documentar cómo verificar cambios"
+          ],
+          "correctIndex": 0,
+          "explanation": "20-safe-changes promueve cambios pequeños con checkpoints para reducir riesgo."
+        }
+      ]
+    },
+    "sections": [
+      {
+        "heading": "Skill 00 · project-profile (visión general)",
+        "paragraphs": [
+          "Este skill define el contexto base del proyecto: identidad, stack, comandos, restricciones y definición de hecho.",
+          "Piensa en él como la configuración mínima que evita decisiones inconsistentes entre diferentes agentes o pasos."
+        ],
+        "bullets": [
+          "Identidad: nombre, tipo de repo y dominio",
+          "Stack: backend, frontend, validación, CI/CD",
+          "Comandos: install, lint, test unit, test e2e, build",
+          "Restricciones: acciones peligrosas y zonas seguras"
+        ]
+      },
+      {
+        "heading": "Skill 00 · cómo llenarlo correctamente",
+        "paragraphs": [
+          "Lénalo corto y accionable. No escribas ensayos, escribe decisiones operativas.",
+          "Si este archivo queda ambiguo, los demás skills pierden precisión en verificación y ejecución."
+        ],
+        "bullets": [
+          "Usa comandos reales que funcionen hoy en tu repo",
+          "Declara qué nunca se toca sin preguntar",
+          "Incluye política de secretos y DoD verificable",
+          "Actualiza este skill cuando cambie el stack"
+        ]
+      },
+      {
+        "heading": "Skill 10 · plan-first aplicado",
+        "paragraphs": [
+          "Este skill impone una plantilla de planificación antes de codificar: objetivo, supuestos, plan, archivos, riesgos y checklist.",
+          "El valor real está en que vuelve auditable el pensamiento y evita soluciones improvisadas."
+        ],
+        "diagram": "flowchart LR\n  A[Objetivo] --> B[Supuestos]\n  B --> C[Plan <= 7 pasos]\n  C --> D[Archivos a tocar]\n  D --> E[Riesgos top 3]\n  E --> F[Checklist de verificación]"
+      },
+      {
+        "heading": "Skill 20 · safe-changes aplicado",
+        "paragraphs": [
+          "Una vez hay plan, este skill controla cómo ejecutar cambios sin romper el sistema.",
+          "La regla de oro: cambios pequeños, intención única y validación frecuente."
+        ],
+        "bullets": [
+          "Evita editar áreas no relacionadas",
+          "Ejecuta lint/tests por checkpoint",
+          "Entrega siempre: qué cambió, cómo verificar, rollback"
+        ]
+      }
+    ]
+  },
+  {
+    "moduleId": "m4",
+    "title": "Módulo 4 · Skill Lab II (30, 40)",
+    "objective": "Aplicar revisión estructurada y estrategia de pruebas para cerrar el ciclo de calidad.",
+    "quiz": {
+      "description": "Cierra el lab validando criterios de code review y testing strategy.",
+      "questions": [
+        {
+          "prompt": "¿Qué salida exige 30-code-review?",
+          "options": [
+            "Must-fix, nice-to-have y preguntas",
+            "Solo aprobación/rechazo",
+            "Solo comentarios de estilo"
+          ],
+          "correctIndex": 0,
+          "explanation": "El skill 30 pide revisión estructurada con hallazgos priorizados y dudas explícitas."
+        },
+        {
+          "prompt": "En 40-tests, ¿qué cobertura mínima se exige?",
+          "options": [
+            "Happy path y al menos un caso negativo clave",
+            "Solo pruebas de UI",
+            "No automatizar nada"
+          ],
+          "correctIndex": 0,
+          "explanation": "40-tests pide cubrir ruta feliz y caso negativo representativo para reducir riesgo básico."
+        },
+        {
+          "prompt": "¿Por qué 30 + 40 se consideran cierre de calidad?",
+          "options": [
+            "Porque validan tanto implementación como evidencia de comportamiento",
+            "Porque reemplazan completamente la planificación",
+            "Porque eliminan la necesidad de documentación"
+          ],
+          "correctIndex": 0,
+          "explanation": "Code review y testing complementan correctitud, seguridad y mantenibilidad antes de liberar."
+        }
+      ]
+    },
+    "sections": [
+      {
+        "heading": "Skill 30 · code-review checklist",
+        "paragraphs": [
+          "Este skill estandariza la revisión en 4 ejes: correctitud, seguridad, mantenibilidad y pruebas.",
+          "Su foco no es editar código, sino detectar riesgos y elevar la calidad de la entrega."
+        ],
+        "bullets": [
+          "Correctness: lógica y edge cases",
+          "Security: validación de entradas y secretos",
+          "Maintainability: claridad, SRP, duplicación",
+          "Tests: cobertura nueva/cambiada y riesgo de flaky"
+        ]
+      },
+      {
+        "heading": "Skill 40 · testing strategy",
+        "paragraphs": [
+          "Este skill fuerza decisión consciente del nivel de prueba: unit, integration o e2e.",
+          "También obliga a distinguir qué se automatiza y qué queda manual con justificación."
+        ],
+        "diagram": "flowchart TD\n  A[Cambio detectado] --> B{Nivel correcto?}\n  B -->|Lógica pura| C[Unit]\n  B -->|Bordes DB/API| D[Integration]\n  B -->|Flujo usuario| E[E2E]\n  C --> F[Happy + negativo]\n  D --> F\n  E --> F\n  F --> G[Riesgo de flaky + mitigación]"
+      },
+      {
+        "heading": "Integración 30 + 40 en el workflow",
+        "paragraphs": [
+          "En este template, después de implementar, la validación técnica y funcional no es opcional.",
+          "30 y 40 te dan un lenguaje común para decidir si algo está realmente listo para avanzar."
+        ],
+        "bullets": [
+          "Si hay must-fix abiertos, no se cierra",
+          "Si no hay evidencia de pruebas, no hay confianza",
+          "Si hay dudas críticas, se documentan como preguntas"
+        ]
+      }
+    ]
+  },
+  {
+    "moduleId": "m5",
+    "title": "Módulo 5 · Sesión Meta: cómo el chat interpreta archivos .md",
+    "objective": "Entender cómo los archivos markdown del repo influyen en decisiones, orden de ejecución y comportamiento del agente.",
+    "quiz": {
+      "description": "Valida que entiendes la jerarquía y el rol de los archivos .md del workflow.",
+      "questions": [
+        {
+          "prompt": "Si hay conflicto entre documentos, ¿cuál manda según AGENTS.md?",
+          "options": [
+            "AGENTS.md como fuente principal",
+            "Cualquier SKILL.md",
+            "README.md siempre"
+          ],
+          "correctIndex": 0,
+          "explanation": "AGENTS.md define explícitamente la jerarquía y actúa como source of truth operativo."
+        },
+        {
+          "prompt": "¿Qué papel tiene un archivo SKILL.md?",
+          "options": [
+            "Proveer una receta especializada para un tipo de tarea",
+            "Reemplazar toda la lógica del proyecto",
+            "Eliminar la necesidad de pruebas"
+          ],
+          "correctIndex": 0,
+          "explanation": "Un skill encapsula buenas prácticas accionables para escenarios concretos (plan, tests, review, etc.)."
+        },
+        {
+          "prompt": "¿Cómo interactúa el chat con estos .md en la práctica?",
+          "options": [
+            "Los lee como reglas/contexto y decide acciones según prioridad y alcance",
+            "Los ignora si hay código fuente",
+            "Solo los usa al final del task"
+          ],
+          "correctIndex": 0,
+          "explanation": "El chat toma estos archivos como contexto normativo para planear, ejecutar y validar cambios."
+        }
+      ]
+    },
+    "sections": [
+      {
+        "heading": "Mapa de archivos .md en este repositorio",
+        "paragraphs": [
+          "No todos los markdown tienen el mismo propósito. Algunos explican, otros gobiernan el comportamiento del agente.",
+          "En este template, AGENTS.md, AI_WORKFLOW.md, SYSTEM_OVERVIEW.md y SKILL.md forman la columna vertebral del proceso."
+        ],
+        "bullets": [
+          "AGENTS.md: modelo operativo y jerarquía",
+          "AI_WORKFLOW.md: explicación de fases",
+          "SYSTEM_OVERVIEW.md: mapa de alto nivel",
+          "SKILL.md: recetas especializadas por tarea"
+        ]
+      },
+      {
+        "heading": "Jerarquía y resolución de conflicto",
+        "paragraphs": [
+          "Cuando dos instrucciones parecen chocar, el agente no improvisa: aplica orden de prioridad.",
+          "Esto evita decisiones arbitrarias y permite trazabilidad del porqué de cada acción."
+        ],
+        "diagram": "flowchart TD\n  A[System/Developer rules] --> B[AGENTS.md]\n  B --> C[.agents/*.md]\n  C --> D[.codex/agents/*.toml]\n  D --> E[Ejecución de tarea]\n  E --> F[Validación + reporte]"
+      },
+      {
+        "heading": "Cómo el chat usa SKILL.md en vivo",
+        "paragraphs": [
+          "Antes de actuar, el agente identifica si hay skill aplicable y carga su contenido.",
+          "Luego adapta su plan y formato de salida según ese skill (ejemplo: plan-first, tests, safe-changes)."
+        ],
+        "bullets": [
+          "Detecta skill relevante por intención de la tarea",
+          "Lee SKILL.md antes de editar",
+          "Ejecuta pasos siguiendo guardrails del skill",
+          "Valida resultados con checklist requerido"
+        ]
+      },
+      {
+        "heading": "Caso práctico: del prompt a la acción",
+        "paragraphs": [
+          "Cuando tú pides “continúa con el curso”, el chat no solo escribe contenido: primero decide qué reglas aplican.",
+          "Con ese contexto, planifica, modifica archivos, ejecuta pruebas y reporta evidencia."
+        ],
+        "diagram": "sequenceDiagram\n  participant U as Usuario\n  participant C as Chat\n  participant M as Markdown rules\n  participant F as Files/Tests\n  U->>C: Solicitud\n  C->>M: Cargar AGENTS + SKILL\n  M-->>C: Reglas y flujo\n  C->>F: Editar y validar\n  F-->>C: Resultados\n  C-->>U: Resumen + verificación"
+      }
+    ]
+  },
+  {
+    "moduleId": "m6",
+    "title": "Módulo 6 · Capa .agents: roles y skills",
+    "objective": "Comprender .agents como capa conceptual del workflow y cómo se relacionan agentes, mapping y skills.",
+    "quiz": {
+      "description": "Valida que entiendes el propósito de .agents y su relación con el flujo oficial.",
+      "questions": [
+        {
+          "prompt": "¿Qué representa principalmente la carpeta .agents?",
+          "options": [
+            "Definiciones conceptuales de roles y responsabilidades",
+            "Solo scripts de despliegue",
+            "Archivos de build del frontend"
+          ],
+          "correctIndex": 0,
+          "explanation": ".agents describe el modelo operativo: quién hace qué y en qué etapa del flujo."
+        },
+        {
+          "prompt": "¿Para qué sirve AGENT_MAPPING.md?",
+          "options": [
+            "Mapear agentes conceptuales con configuración de ejecución",
+            "Guardar claves de API",
+            "Reemplazar AGENTS.md"
+          ],
+          "correctIndex": 0,
+          "explanation": "El mapping conecta la intención conceptual con la capa runtime."
+        },
+        {
+          "prompt": "¿Cuál afirmación sobre SKILL.md es correcta?",
+          "options": [
+            "Define protocolos especializados para tareas concretas",
+            "Es solo documentación decorativa",
+            "No afecta decisiones del agente"
+          ],
+          "correctIndex": 0,
+          "explanation": "Los skills guían ejecución práctica con reglas y checklist verificables."
+        }
+      ]
+    },
+    "sections": [
+      {
+        "heading": "Qué hay dentro de .agents",
+        "paragraphs": [
+          "La carpeta .agents define el mapa conceptual del sistema: roles, límites y responsabilidades por fase.",
+          "Aquí viven archivos como planner.agent.md, dev.agent.md, qa-*.agent.md, reviewer.agent.md y meta.agent.md."
+        ],
+        "bullets": [
+          "Archivos .agent.md: comportamiento esperado por rol",
+          "AGENT_MAPPING.md: puente concepto ↔ ejecución",
+          "skills/*/SKILL.md: protocolos especializados por intención"
+        ]
+      },
+      {
+        "heading": "Secuencia de roles en .agents",
+        "paragraphs": [
+          "Los roles no son decorativos: su orden evita mezclar responsabilidades y minimiza retrabajo."
+        ],
+        "diagram": "flowchart LR\n  A[planner.agent.md] --> B[qa-strategy.agent.md]\n  B --> C[dev.agent.md]\n  C --> D[qa-functional / qa-api]\n  D --> E[reviewer.agent.md]\n  E --> F[qa-regression.agent.md]\n  F --> G[meta/security opcional]"
+      },
+      {
+        "heading": "Skills clave dentro de .agents/skills",
+        "paragraphs": [
+          "Cada skill aporta una pieza concreta del proceso, por ejemplo plan-first o safe-changes.",
+          "Piensa en skills como “micro-protocolos” reutilizables que el agente puede cargar según contexto."
+        ],
+        "bullets": [
+          "00-project-profile: contexto base",
+          "10-plan-first: plan verificable",
+          "20-safe-changes: ejecución segura",
+          "30-code-review y 40-tests: cierre de calidad"
+        ]
+      }
+    ]
+  },
+  {
+    "moduleId": "m7",
+    "title": "Módulo 7 · Capa .codex: configuración runtime",
+    "objective": "Distinguir la capa runtime (.codex/agents/*.toml) y cómo materializa el diseño conceptual.",
+    "quiz": {
+      "description": "Comprueba que ya diferencias intención conceptual y configuración de ejecución.",
+      "questions": [
+        {
+          "prompt": "¿Qué tipo de archivos viven en .codex/agents?",
+          "options": [
+            "Configuraciones .toml para ejecución runtime",
+            "Videos de capacitación",
+            "Solo markdown de documentación"
+          ],
+          "correctIndex": 0,
+          "explanation": "En .codex/agents se definen configuraciones runtime por agente."
+        },
+        {
+          "prompt": "builder.toml se asocia principalmente con:",
+          "options": [
+            "Ejecución e implementación técnica",
+            "Solo diseño visual",
+            "Gestión de usuarios finales"
+          ],
+          "correctIndex": 0,
+          "explanation": "builder representa la capa de ejecución para construcción/implementación."
+        },
+        {
+          "prompt": "Si quieres cambiar responsabilidades de rol, ¿dónde empiezas?",
+          "options": [
+            "En .agents (capa conceptual)",
+            "Solo en .codex",
+            "Directamente en tests e2e"
+          ],
+          "correctIndex": 0,
+          "explanation": "Primero se define intención en .agents y luego se refleja en .codex."
+        }
+      ]
+    },
+    "sections": [
+      {
+        "heading": "Qué resuelve la capa .codex",
+        "paragraphs": [
+          "Mientras .agents dice qué se espera, .codex define cómo corre eso en entorno runtime.",
+          "Es la traducción operativa del diseño conceptual a parámetros ejecutables."
+        ],
+        "bullets": [
+          "planner.toml",
+          "builder.toml",
+          "qa.toml",
+          "reviewer.toml",
+          "security.toml"
+        ]
+      },
+      {
+        "heading": "Puente entre capas",
+        "paragraphs": [
+          "Una arquitectura robusta separa intención de ejecución para facilitar mantenimiento y evolución."
+        ],
+        "diagram": "flowchart TD\n  A[.agents/*.md (intención)] --> B[AGENT_MAPPING.md]\n  B --> C[.codex/agents/*.toml (runtime)]\n  C --> D[Comportamiento observable]\n  D --> E[Pruebas y validación]"
+      },
+      {
+        "heading": "Buenas prácticas al tocar .codex",
+        "paragraphs": [
+          "Evita modificar runtime sin antes validar impacto conceptual.",
+          "Cualquier cambio aquí debe tener trazabilidad y validación."
+        ],
+        "bullets": [
+          "Alinear cambio con AGENTS.md y .agents",
+          "Documentar motivo en AGENTS_CHANGELOG.md",
+          "Ejecutar pruebas/regresión tras ajustes"
+        ]
+      }
+    ]
+  },
+  {
+    "moduleId": "m8",
+    "title": "Módulo 8 · Markdowns raíz y gobernanza del flujo",
+    "objective": "Entender cómo los markdowns de raíz coordinan reglas, seguridad y trazabilidad del proyecto.",
+    "quiz": {
+      "description": "Valida que dominas el rol de AGENTS.md, AGENTS_CHANGELOG y demás markdowns raíz.",
+      "questions": [
+        {
+          "prompt": "¿Qué documento manda cuando hay conflicto de instrucciones?",
+          "options": [
+            "AGENTS.md",
+            "README.md",
+            "SECURITY.md"
+          ],
+          "correctIndex": 0,
+          "explanation": "AGENTS.md define explícitamente la jerarquía de decisión."
+        },
+        {
+          "prompt": "¿Para qué se usa AGENTS_CHANGELOG.md?",
+          "options": [
+            "Registrar cambios relevantes del workflow/template",
+            "Guardar credenciales sensibles",
+            "Compilar assets de UI"
+          ],
+          "correctIndex": 0,
+          "explanation": "Permite trazabilidad histórica de cambios operativos."
+        },
+        {
+          "prompt": "¿Qué aporta SECURITY.md en esta arquitectura?",
+          "options": [
+            "Políticas y guardrails de seguridad",
+            "Reemplaza todos los tests",
+            "Define la UI del curso"
+          ],
+          "correctIndex": 0,
+          "explanation": "Security define prácticas para reducir riesgos y evitar patrones inseguros."
+        }
+      ]
+    },
+    "sections": [
+      {
+        "heading": "Mapa de markdowns en la raíz",
+        "paragraphs": [
+          "La raíz del repo concentra documentos de gobierno del sistema.",
+          "Su lectura en orden correcto acelera onboarding y evita decisiones contradictorias."
+        ],
+        "bullets": [
+          "AGENTS.md: modelo operativo oficial",
+          "AGENTS_CHANGELOG.md: historial de cambios del template",
+          "AI_WORKFLOW.md y SYSTEM_OVERVIEW.md: guía funcional y mapa global",
+          "README.md y SECURITY.md: entrada técnica y políticas"
+        ]
+      },
+      {
+        "heading": "Ruta incremental recomendada para nuevos usuarios",
+        "paragraphs": [
+          "Este orden te da contexto progresivo sin saturar al usuario en la primera lectura."
+        ],
+        "diagram": "flowchart LR\n  A[README.md] --> B[SYSTEM_OVERVIEW.md]\n  B --> C[AI_WORKFLOW.md]\n  C --> D[AGENTS.md]\n  D --> E[.agents + skills]\n  E --> F[.codex runtime]\n  F --> G[AGENTS_CHANGELOG.md]"
+      },
+      {
+        "heading": "Checklist de gobernanza para iteraciones futuras",
+        "paragraphs": [
+          "Cuando el proyecto crece, mantener orden documental reduce deuda de conocimiento.",
+          "Usa este checklist para cada release de workflow."
+        ],
+        "bullets": [
+          "Actualizar markdown fuente de verdad si cambian reglas",
+          "Registrar cambios notables en AGENTS_CHANGELOG.md",
+          "Verificar consistencia .agents ↔ .codex ↔ tests",
+          "Mantener lenguaje simple para onboarding"
+        ]
+      }
+    ]
+  }
+]

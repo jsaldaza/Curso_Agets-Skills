@@ -1,0 +1,142 @@
+{
+  "groups": [
+    {
+      "id": "agents",
+      "title": ".agents · conceptual layer",
+      "description": "Defines workflow roles, responsibilities, and skills.",
+      "items": [
+        {
+          "id": "agents-mapping",
+          "label": "AGENT_MAPPING.md",
+          "path": ".agents/AGENT_MAPPING.md",
+          "kind": "mapping",
+          "whatItIs": "Bridge between conceptual agents and runtime execution configuration.",
+          "whenToRead": "After understanding AGENTS.md and before editing .codex.",
+          "whyItMatters": "Prevents confusion between conceptual roles and runtime implementation.",
+          "commonMistakes": [
+            "Changing runtime without checking the mapping",
+            "Assuming the mapping replaces AGENTS.md"
+          ]
+        },
+        {
+          "id": "agents-roles",
+          "label": "*.agent.md",
+          "path": ".agents/*.agent.md",
+          "kind": "role-definition",
+          "whatItIs": "Set of files defining expected behavior for planner, dev, reviewer, and QA roles.",
+          "whenToRead": "When you want to understand who does what in the official flow.",
+          "whyItMatters": "Provides a mental structure for the workflow and reduces responsibility mixing.",
+          "commonMistakes": [
+            "Using one role to solve everything",
+            "Ignoring differences between qa-strategy, qa-functional, and qa-regression"
+          ]
+        },
+        {
+          "id": "agents-skills",
+          "label": "skills/*/SKILL.md",
+          "path": ".agents/skills/*/SKILL.md",
+          "kind": "skill",
+          "whatItIs": "Specialized protocols for planning, safe changes, reviewing, and testing.",
+          "whenToRead": "Before non-trivial tasks or whenever work changes phase.",
+          "whyItMatters": "Turns best practices into concrete repeatable steps.",
+          "commonMistakes": [
+            "Treating a skill as passive documentation",
+            "Not loading the skill before editing files"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "codex",
+      "title": ".codex · runtime layer",
+      "description": "Configures how agent execution is materialized at runtime.",
+      "items": [
+        {
+          "id": "codex-builder",
+          "label": "builder.toml",
+          "path": ".codex/agents/builder.toml",
+          "kind": "runtime-agent",
+          "whatItIs": "Runtime config for implementation/build-oriented execution.",
+          "whenToRead": "After reviewing .agents if you want to understand the operational layer.",
+          "whyItMatters": "Turns conceptual intent into executable behavior.",
+          "commonMistakes": [
+            "Editing builder without validating conceptual impact",
+            "Assuming builder defines the entire strategy"
+          ]
+        },
+        {
+          "id": "codex-planner",
+          "label": "planner.toml",
+          "path": ".codex/agents/planner.toml",
+          "kind": "runtime-agent",
+          "whatItIs": "Runtime config for the agent responsible for discovery and initial structuring.",
+          "whenToRead": "When you want to see how the planner phase is operationalized.",
+          "whyItMatters": "Keeps execution aligned with the requirement to start from understanding.",
+          "commonMistakes": [
+            "Skipping planner in complex changes",
+            "Changing planner without updating conceptual expectations"
+          ]
+        },
+        {
+          "id": "codex-quality",
+          "label": "qa.toml / reviewer.toml / security.toml",
+          "path": ".codex/agents/{qa,reviewer,security}.toml",
+          "kind": "runtime-agent",
+          "whatItIs": "Runtime configs for validation, review, and security guardrails.",
+          "whenToRead": "When examining how quality gates and guardrails are operationalized.",
+          "whyItMatters": "Keeps the verification layer active in the workflow.",
+          "commonMistakes": [
+            "Thinking QA and review are optional",
+            "Editing security without revisiting policy and risk"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "root",
+      "title": "Repository root · governance system",
+      "description": "Source-of-truth docs, changelog, overview, and policy files.",
+      "items": [
+        {
+          "id": "root-agents",
+          "label": "AGENTS.md",
+          "path": "AGENTS.md",
+          "kind": "source-of-truth",
+          "whatItIs": "Main document defining the operating model and decision hierarchy.",
+          "whenToRead": "First, whenever there is doubt about priority or process.",
+          "whyItMatters": "It is the workflow source of truth.",
+          "commonMistakes": [
+            "Treating README as higher priority",
+            "Changing workflow without reflecting it in AGENTS.md"
+          ]
+        },
+        {
+          "id": "root-changelog",
+          "label": "AGENTS_CHANGELOG.md",
+          "path": "AGENTS_CHANGELOG.md",
+          "kind": "traceability",
+          "whatItIs": "Record of notable template and workflow changes.",
+          "whenToRead": "When understanding system evolution or documenting important changes.",
+          "whyItMatters": "Provides historical traceability and preserves decision context.",
+          "commonMistakes": [
+            "Making structural changes without recording them",
+            "Using it like a README instead of a history log"
+          ]
+        },
+        {
+          "id": "root-overview",
+          "label": "AI_WORKFLOW.md / SYSTEM_OVERVIEW.md / README.md / SECURITY.md",
+          "path": "{AI_WORKFLOW,SYSTEM_OVERVIEW,README,SECURITY}.md",
+          "kind": "guidance",
+          "whatItIs": "Documents explaining workflow, system overview, technical onboarding, and security policy.",
+          "whenToRead": "During onboarding, before process changes, and when reviewing risks.",
+          "whyItMatters": "Provides broad context, shared language, and safety boundaries.",
+          "commonMistakes": [
+            "Reading only README and skipping SECURITY/OVERVIEW",
+            "Not aligning technical changes with global documentation"
+          ]
+        }
+      ]
+    }
+  ]
+}

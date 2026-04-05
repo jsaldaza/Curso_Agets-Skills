@@ -1,0 +1,139 @@
+{
+  "title": "Evaluación final · Skill Labs m3+m4+m5",
+  "description": "Integra planificación, ejecución segura, revisión, pruebas y gobernanza de archivos markdown.",
+  "passScore": 9,
+  "questions": [
+    {
+      "module": "m3",
+      "prompt": "Antes de editar código en una tarea no trivial, ¿qué deberías hacer primero?",
+      "options": [
+        "Definir un plan con alcance, riesgos y verificación",
+        "Cambiar todo de una vez para ahorrar tiempo",
+        "Esperar a que falle en producción"
+      ],
+      "correctIndex": 0,
+      "explanation": "El skill 10-plan-first exige plan explícito antes de cambios relevantes."
+    },
+    {
+      "module": "m3",
+      "prompt": "¿Cuántos pasos tiene el formato de salida del skill 10-plan-first?",
+      "options": [
+        "3 pasos: objetivo, plan, rollback",
+        "6 pasos: objetivo, supuestos, plan, archivos, riesgos, checklist",
+        "Solo 1 paso: lista de tareas"
+      ],
+      "correctIndex": 1,
+      "explanation": "El output format del skill plan-first define 6 secciones obligatorias para garantizar claridad y trazabilidad."
+    },
+    {
+      "module": "m3",
+      "prompt": "¿Qué regla del skill 20-safe-changes limita el tamaño de cada cambio?",
+      "options": [
+        "Un intent por commit; cambios pequeños y verificables",
+        "Cambios grandes agrupados para reducir el número de commits",
+        "Solo editar archivos CSS para evitar riesgos"
+      ],
+      "correctIndex": 0,
+      "explanation": "Safe-changes exige commits atómicos: un objetivo por commit, con lint y tests después de cada uno."
+    },
+    {
+      "module": "m4",
+      "prompt": "¿Cuál combinación refleja mejor calidad técnica antes de cerrar trabajo?",
+      "options": [
+        "Code review estructurado + pruebas de happy path y negativo clave",
+        "Solo revisar formato de código",
+        "No revisar nada si compila"
+      ],
+      "correctIndex": 0,
+      "explanation": "Los skills 30 y 40 combinan revisión profunda y pruebas enfocadas."
+    },
+    {
+      "module": "m4",
+      "prompt": "El agente 'reviewer' puede modificar el código que revisa para corregir bugs que encuentre.",
+      "options": [
+        "Verdadero, es su responsabilidad principal",
+        "Falso, solo analiza y reporta sin modificar código",
+        "Depende del proyecto"
+      ],
+      "correctIndex": 1,
+      "explanation": "AGENTS.md define explícitamente que el reviewer solo analiza y reporta. No modifica código."
+    },
+    {
+      "module": "m4",
+      "prompt": "¿Qué tipo de prueba valida que un cambio reciente no rompió funcionalidad existente?",
+      "options": [
+        "Prueba unitaria",
+        "Prueba de integración",
+        "Prueba de regresión"
+      ],
+      "correctIndex": 2,
+      "explanation": "Las pruebas de regresión verifican que cambios nuevos no introdujeron fallos en funcionalidad ya existente."
+    },
+    {
+      "module": "m4",
+      "prompt": "¿Qué agente del workflow decide si el trabajo está maduro para avanzar a producción?",
+      "options": [
+        "dev, porque implementó el código",
+        "meta, que evalúa madurez sin modificar nada",
+        "planner, porque definió el plan original"
+      ],
+      "correctIndex": 1,
+      "explanation": "El agente meta es un gate opcional que juzga preparación y puede bloquear el avance si hay gaps importantes."
+    },
+    {
+      "module": "m5",
+      "prompt": "Si dos markdown parecen contradecirse, ¿qué principio aplicas?",
+      "options": [
+        "Usar la jerarquía definida en AGENTS.md",
+        "Escoger el archivo más corto",
+        "Ignorar markdowns y continuar"
+      ],
+      "correctIndex": 0,
+      "explanation": "La sesión m5 enfatiza prioridad explícita para decisiones trazables."
+    },
+    {
+      "module": "m5",
+      "prompt": "¿Cuál es la jerarquía correcta de fuentes de verdad en este repositorio?",
+      "options": [
+        "README.md → AGENTS.md → .agents/*.md",
+        "AGENTS.md → .agents/*.md → .codex/*.toml",
+        ".codex/*.toml → .agents/*.md → AGENTS.md"
+      ],
+      "correctIndex": 1,
+      "explanation": "La jerarquía oficial está en AGENTS.md: AGENTS.md gana siempre, luego .agents/*.md, luego .codex/*.toml."
+    },
+    {
+      "module": "m5",
+      "prompt": "¿Qué archivo define el workflow oficial y el orden de los agentes en este repo?",
+      "options": [
+        "package.json",
+        "AGENTS.md",
+        "README.md"
+      ],
+      "correctIndex": 1,
+      "explanation": "AGENTS.md es el documento operativo raíz: define roles, orden del workflow y reglas de negocio del sistema."
+    },
+    {
+      "module": "general",
+      "prompt": "El orden correcto del workflow oficial es:",
+      "options": [
+        "dev → planner → qa-strategy → reviewer → qa-regression",
+        "planner → qa-strategy → dev → qa → reviewer → qa-regression",
+        "qa-strategy → dev → planner → reviewer"
+      ],
+      "correctIndex": 1,
+      "explanation": "AGENTS.md define el orden: planner primero, luego estrategia de QA, luego implementación, luego validación y revisión."
+    },
+    {
+      "module": "general",
+      "prompt": "¿Cuál es el principio central que justifica no empezar nunca con código?",
+      "options": [
+        "El código es difícil de escribir",
+        "Entender, planificar y validar estrategia primero reduce retrabajo y aumenta trazabilidad",
+        "Las herramientas de IA no pueden escribir código"
+      ],
+      "correctIndex": 1,
+      "explanation": "El principio núcleo de AGENTS.md: entendimiento y plan antes de código. Evita retrabajo costoso y garantiza claridad."
+    }
+  ]
+}

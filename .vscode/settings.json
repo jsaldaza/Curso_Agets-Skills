@@ -1,0 +1,8 @@
+{
+  "chat.agent.enabled": true,
+  "chat.autopilot.enabled": false,
+  "chat.useCustomAgentHooks": true,
+  "terminal.integrated.env.windows": {
+    "UV_SYSTEM_CERTS": "true"
+  }
+}

@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title id="home-page-title">Curso: Agentes AI por Skills</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <nav class="site-nav" aria-label="Navegación del curso">
+      <div class="site-nav-inner">
+        <a class="site-nav-link site-nav-home is-active" href="/index.html">🏠 Inicio</a>
+        <span class="site-nav-sep" aria-hidden="true">›</span>
+        <a class="site-nav-link" href="/repo-explorer.html">Explorador</a>
+        <span class="site-nav-sep" aria-hidden="true">›</span>
+        <a class="site-nav-link" href="/skills.html">Skill Lab</a>
+        <span class="site-nav-sep" aria-hidden="true">›</span>
+        <a class="site-nav-link" href="/glossary.html">Glosario</a>
+        <span class="site-nav-sep" aria-hidden="true">›</span>
+        <a class="site-nav-link" href="/final-assessment.html">Evaluación</a>
+      </div>
+    </nav>
+    <header class="hero">
+      <h1 id="home-title">Aprende agentes AI por skills, desde cero</h1>
+      <p id="home-subtitle">
+        Una guía visual para personas con poca o nula experiencia en programación.
+        Empieza básico, avanza con ejemplos reales de este repositorio y entiende el
+        workflow completo.
+      </p>
+      <div class="hero-actions">
+        <label for="language-switch" class="module-meta" id="language-label">Idioma</label>
+        <select id="language-switch" class="language-select">
+          <option value="es">Español</option>
+          <option value="en">English</option>
+        </select>
+        <button id="start-home-tour" class="secondary-button" type="button">Iniciar demo guiada</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="panel" id="home-progress-panel">
+        <h2 id="home-progress-title">Tu progreso</h2>
+        <p id="progress-summary">Cargando progreso...</p>
+        <div class="progress-track" aria-label="Progreso del curso">
+          <div id="progress-fill" class="progress-fill" style="width: 0%"></div>
+        </div>
+      </section>
+
+      <section class="panel knowledge-hub-panel" id="home-assets-panel">
+        <div class="knowledge-hub-header">
+          <div>
+            <p class="badge" id="home-assets-badge">Centro de conocimiento</p>
+            <h2 id="home-assets-title">Recursos de estudio</h2>
+            <p id="home-assets-description">Accesos rápidos para estudiar skills, glosario y la sesión sobre archivos .md.</p>
+          </div>
+          <div id="hub-progress-indicator" class="hub-progress-indicator" aria-labelledby="home-assets-title">
+            <p id="hub-progress-summary" class="module-meta"></p>
+            <div class="progress-track" aria-label="Progreso del centro de conocimiento">
+              <div id="hub-progress-fill" class="progress-fill" style="width: 0%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="knowledge-route" aria-labelledby="home-assets-route-title">
+          <div class="knowledge-route-head">
+            <h3 id="home-assets-route-title">Ruta recomendada</h3>
+            <p id="home-assets-route-description" class="module-meta">Sigue este orden para entender primero el mapa, luego practicar y finalmente validar.</p>
+          </div>
+          <div class="knowledge-route-steps">
+            <article class="route-step">
+              <span class="route-step-number">1</span>
+              <div>
+                <strong id="route-step-1-title">Mapea el sistema</strong>
+                <p id="route-step-1-description">Empieza por el explorer para ubicar capas y archivos clave.</p>
+              </div>
+            </article>
+            <article class="route-step">
+              <span class="route-step-number">2</span>
+              <div>
+                <strong id="route-step-2-title">Practica con skills</strong>
+                <p id="route-step-2-description">Pasa al Skill Lab para aterrizar cómo se usa cada skill.</p>
+              </div>
+            </article>
+            <article class="route-step">
+              <span class="route-step-number">3</span>
+              <div>
+                <strong id="route-step-3-title">Aclara vocabulario</strong>
+                <p id="route-step-3-description">Usa glosario y sesión .md cuando necesites contexto fino.</p>
+              </div>
+            </article>
+            <article class="route-step">
+              <span class="route-step-number">4</span>
+              <div>
+                <strong id="route-step-4-title">Valida criterio</strong>
+                <p id="route-step-4-description">Cierra con la evaluación final para comprobar comprensión integrada.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="knowledge-hub-grid">
+          <a id="skills-link" class="resource-card" href="/skills.html">
+            <h3 id="skills-title">Skill Lab modular</h3>
+            <p id="skills-description">Menú lateral por skill con detalle, checklist, mejoras y mini-planes por tipo de proyecto.</p>
+            <span id="skills-meta" class="resource-meta">Laboratorio práctico</span>
+          </a>
+          <a id="glossary-link" class="resource-card" href="/glossary.html">
+            <h3 id="glossary-title">Glosario bilingüe</h3>
+            <p id="glossary-description">Términos clave para comprender el workflow sin perderte en la jerga.</p>
+            <span id="glossary-meta" class="resource-meta">Consulta rápida</span>
+          </a>
+          <a id="md-session-link" class="resource-card" href="/lesson.html?id=m5">
+            <h3 id="md-session-title">Sesión .md y comportamiento del chat</h3>
+            <p id="md-session-description">Entiende cómo el chat prioriza markdowns, reglas e instrucciones del repo.</p>
+            <span id="md-session-meta" class="resource-meta">Jerarquía de instrucciones</span>
+          </a>
+          <a id="final-assessment-link" class="resource-card resource-card-accent" href="/final-assessment.html">
+            <h3 id="final-assessment-title">Evaluación final m3+m4+m5</h3>
+            <p id="final-assessment-description">Comprueba si ya integraste skills, testing, review y gobernanza .md.</p>
+            <span id="final-assessment-meta" class="resource-meta">Cierre del recorrido</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="panel" id="home-route-panel">
+        <h2 id="home-route-title">Ruta de aprendizaje</h2>
+        <div id="module-grid" class="module-grid" aria-live="polite"></div>
+      </section>
+
+      <section class="panel" id="home-workflow-panel">
+        <h2 id="home-workflow-title">Cómo interactúan los agentes</h2>
+        <p id="home-workflow-description">
+          Este diagrama 2D resume el flujo oficial para construir software con menos
+          retrabajo.
+        </p>
+        <pre class="mermaid" id="workflow-diagram">
+flowchart LR
+    A[planner] --> B[qa-strategy]
+    B --> C[dev]
+    C --> D[qa-functional / qa-api]
+    D --> E[reviewer]
+    E --> F[qa-regression]
+    F --> G{Listo para avanzar}
+    G -- No --> A
+    G -- Sí --> H[Entrega]
+        </pre>
+      </section>
+
+      <section class="panel architecture-panel" id="home-architecture-panel">
+        <h2 id="home-architecture-title">Arquitectura completa del repositorio</h2>
+        <p id="home-architecture-description">
+          Vista de capas para entender cómo se conectan gobernanza, agentes, runtime,
+          aplicación del curso y validación.
+        </p>
+        <div id="architecture-layers" class="architecture-layers" aria-live="polite"></div>
+        <h3 id="home-architecture-diagram-title">Diagrama de arquitectura</h3>
+        <pre class="mermaid" id="architecture-diagram">
+flowchart TB
+    A[Root Governance\nAGENTS.md · AI_WORKFLOW.md · SYSTEM_OVERVIEW.md · SECURITY.md] --> B[Concept Layer\n.agents/*.agent.md + skills/*/SKILL.md]
+    B --> C[Runtime Layer\n.codex/agents/*.toml]
+    C --> D[Course Application\napps/course-site/public + content/*.json]
+    D --> E[Validation Layer\ntests/course + tests/unit + scripts/pre-checks.sh]
+    E --> F[Delivery\nStatic server + local run]
+        </pre>
+        <a id="home-architecture-doc-link" class="module-link" href="/repo-architecture.md">Ver documento de arquitectura completo</a>
+      </section>
+
+      <section class="panel">
+        <h2 id="home-practical-title">Ejemplo práctico del repositorio</h2>
+        <ol id="home-practical-steps">
+          <li>Definir objetivo claro en lenguaje simple.</li>
+          <li>Planificar validaciones antes de programar.</li>
+          <li>Implementar cambios pequeños y verificables.</li>
+          <li>Ejecutar pruebas y revisar riesgos.</li>
+        </ol>
+      </section>
+    </main>
+
+    <footer>
+      <p id="home-footer">Hecho para enseñar AI Engineering de forma simple, visual y práctica.</p>
+    </footer>
+
+    <script type="module" src="/app.js"></script>
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+    </script>
+  </body>
+</html>

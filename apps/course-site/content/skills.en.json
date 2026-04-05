@@ -1,0 +1,192 @@
+[
+  {
+    "id": "00",
+    "name": "project-profile",
+    "category": "planning",
+    "file": ".agents/skills/00-project-profile/SKILL.md",
+    "lessonId": "m3",
+    "purpose": "Capture stack, commands, and project constraints to reduce blind decisions in later steps.",
+    "pitfall": "Starting changes without documenting test commands or validating repository context.",
+    "whatItDoes": "Centralizes baseline project context so every other skill starts from the same technical map.",
+    "whenToUse": "At new repository kickoff, when inheriting code, or before a major iteration.",
+    "checklist": [
+      "Define real install/test/build commands",
+      "Identify safe zones and dangerous actions",
+      "Register security and secrets constraints"
+    ],
+    "suggestions": [
+      "Keep the profile short but actionable",
+      "If stack or scripts change, update this skill first",
+      "Include commands actually used in CI/local"
+    ],
+    "improvements": [
+      "Add owner table by module",
+      "Include naming and branch policy conventions",
+      "Version key profile updates in changelog"
+    ],
+    "projectPlayground": [
+      {
+        "scenario": "Node API project",
+        "tweak": "Split unit test command from contract test command",
+        "expectedImpact": "Less ambiguity when choosing validation depth"
+      },
+      {
+        "scenario": "Educational frontend project",
+        "tweak": "Add a minimal accessibility section",
+        "expectedImpact": "Better UX quality from early stages"
+      }
+    ]
+  },
+  {
+    "id": "10",
+    "name": "plan-first",
+    "category": "planning",
+    "file": ".agents/skills/10-plan-first/SKILL.md",
+    "lessonId": "m3",
+    "purpose": "Define scope, risks, impacted files, and verification strategy before editing code.",
+    "pitfall": "Jumping straight to implementation without measurable success criteria.",
+    "whatItDoes": "Transforms a request into an executable plan with clear boundaries and validation.",
+    "whenToUse": "Whenever the change touches multiple files or introduces new behavior.",
+    "checklist": [
+      "Restate goal in one line",
+      "List explicit assumptions",
+      "Define up to 7 verifiable steps"
+    ],
+    "suggestions": [
+      "Use top-3 risks to prioritize tests",
+      "Avoid vague steps like 'improve code'",
+      "Tie each step to a verifiable artifact"
+    ],
+    "improvements": [
+      "Plan templates by feature type",
+      "External dependency checklist",
+      "Impact vs effort matrix for backlog"
+    ],
+    "projectPlayground": [
+      {
+        "scenario": "Add new screen",
+        "tweak": "Split plan into UX, data, validation, and tests",
+        "expectedImpact": "Less frontend/backend rework"
+      },
+      {
+        "scenario": "Legacy module refactor",
+        "tweak": "Include baseline metrics before/after",
+        "expectedImpact": "Better evidence of real improvement"
+      }
+    ]
+  },
+  {
+    "id": "20",
+    "name": "safe-changes",
+    "category": "execution",
+    "file": ".agents/skills/20-safe-changes/SKILL.md",
+    "lessonId": "m3",
+    "purpose": "Encourage small diffs, checkpoints, and rollback paths for auditable reversible changes.",
+    "pitfall": "Doing massive refactors without checkpoints or intermediate validation.",
+    "whatItDoes": "Reduces implementation risk through incremental steps and frequent validation.",
+    "whenToUse": "When critical flows may break or when multiple contributors work in parallel.",
+    "checklist": [
+      "Separate changes by intent",
+      "Run tests after each block",
+      "Leave clear rollback notes"
+    ],
+    "suggestions": [
+      "Do not mix refactor + feature in one commit",
+      "If scope grows, pause and split into stages",
+      "Document required manual validation"
+    ],
+    "improvements": [
+      "Environment rollout checklist",
+      "Rollback template by service",
+      "CI guardrails for oversized diffs"
+    ],
+    "projectPlayground": [
+      {
+        "scenario": "Public API change",
+        "tweak": "Introduce a temporary feature flag",
+        "expectedImpact": "Faster rollback in production"
+      },
+      {
+        "scenario": "UI component redesign",
+        "tweak": "Migrate by screen batches",
+        "expectedImpact": "Lower risk of broad UX breakage"
+      }
+    ]
+  },
+  {
+    "id": "30",
+    "name": "code-review",
+    "category": "quality",
+    "file": ".agents/skills/30-code-review/SKILL.md",
+    "lessonId": "m4",
+    "purpose": "Assess correctness, security, maintainability, and technical debt before closure.",
+    "pitfall": "Reviewing only style while missing edge cases and contract impact.",
+    "whatItDoes": "Applies structured review to find defects basic tests may miss.",
+    "whenToUse": "Before merge/delivery, especially on logic or contract changes.",
+    "checklist": [
+      "Review business assumptions",
+      "Validate null/error handling",
+      "Check security and performance impact"
+    ],
+    "suggestions": [
+      "Tag findings with severity (high/medium/low)",
+      "Prioritize functional bugs over style",
+      "Include edge-case review evidence"
+    ],
+    "improvements": [
+      "Domain-specific review rubric",
+      "Actionable comment templates",
+      "Recurring defect metrics by sprint"
+    ],
+    "projectPlayground": [
+      {
+        "scenario": "Onboarding pull request",
+        "tweak": "Use a didactic checklist for junior devs",
+        "expectedImpact": "Better transfer of quality criteria"
+      },
+      {
+        "scenario": "Security refactor",
+        "tweak": "Add cross-review with OWASP focus",
+        "expectedImpact": "Lower vulnerability risk"
+      }
+    ]
+  },
+  {
+    "id": "40",
+    "name": "tests",
+    "category": "quality",
+    "file": ".agents/skills/40-tests/SKILL.md",
+    "lessonId": "m4",
+    "purpose": "Define test coverage for happy path, edge cases, and expected failure scenarios.",
+    "pitfall": "Shipping behavior without regression tests or controlled-error assertions.",
+    "whatItDoes": "Builds objective evidence that new and existing behavior remain healthy.",
+    "whenToUse": "In any behavior change, bugfix, or contract evolution.",
+    "checklist": [
+      "Cover happy path",
+      "Add at least one key negative case",
+      "State what remains manual and why"
+    ],
+    "suggestions": [
+      "Avoid brittle tests tied to internal details",
+      "Prefer readable test fixtures",
+      "Isolate external dependencies to reduce flakes"
+    ],
+    "improvements": [
+      "Coverage matrix by module",
+      "Regression alerts in CI",
+      "Reusable fixture package"
+    ],
+    "projectPlayground": [
+      {
+        "scenario": "New business rule",
+        "tweak": "Model valid and invalid cases first",
+        "expectedImpact": "Fewer boundary bugs in production"
+      },
+      {
+        "scenario": "Recurring critical bug",
+        "tweak": "Add regression test before fix",
+        "expectedImpact": "Prevents incident recurrence"
+      }
+    ]
+  }
+]

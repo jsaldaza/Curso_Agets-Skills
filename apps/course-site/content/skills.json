@@ -1,0 +1,192 @@
+[
+  {
+    "id": "00",
+    "name": "project-profile",
+    "category": "planning",
+    "file": ".agents/skills/00-project-profile/SKILL.md",
+    "lessonId": "m3",
+    "purpose": "Captura stack, comandos y restricciones del proyecto para reducir decisiones ciegas en los siguientes pasos.",
+    "pitfall": "Arrancar cambios sin documentar comandos de prueba o sin validar contexto del repositorio.",
+    "whatItDoes": "Centraliza contexto base del proyecto para que todos los demás skills partan del mismo mapa técnico.",
+    "whenToUse": "Al iniciar un repo nuevo, cuando heredas código de otro equipo o antes de una iteración grande.",
+    "checklist": [
+      "Definir comandos reales de install/test/build",
+      "Identificar áreas seguras y acciones peligrosas",
+      "Registrar restricciones de seguridad y secretos"
+    ],
+    "suggestions": [
+      "Mantén el perfil corto, pero accionable",
+      "Si cambia stack o scripts, actualiza primero este skill",
+      "Incluye comandos que realmente corras en CI/local"
+    ],
+    "improvements": [
+      "Agregar una tabla de owners por módulo",
+      "Incluir convenciones de naming y branch policy",
+      "Versionar cambios clave del perfil en changelog"
+    ],
+    "projectPlayground": [
+      {
+        "scenario": "Proyecto Node API",
+        "tweak": "Define test unitario y test de contrato separados",
+        "expectedImpact": "Menos ambigüedad al elegir el tipo de validación"
+      },
+      {
+        "scenario": "Proyecto Frontend educativo",
+        "tweak": "Añade sección de accesibilidad mínima",
+        "expectedImpact": "Mejor calidad UX desde fases tempranas"
+      }
+    ]
+  },
+  {
+    "id": "10",
+    "name": "plan-first",
+    "category": "planning",
+    "file": ".agents/skills/10-plan-first/SKILL.md",
+    "lessonId": "m3",
+    "purpose": "Define alcance, riesgos, archivos afectados y estrategia de verificación antes de tocar código.",
+    "pitfall": "Saltar directo a implementar sin criterios de éxito medibles.",
+    "whatItDoes": "Traduce una solicitud en plan ejecutable con límites claros y validación definida.",
+    "whenToUse": "Siempre que el cambio afecte más de un archivo o introduzca comportamiento nuevo.",
+    "checklist": [
+      "Reformular objetivo en una línea",
+      "Listar supuestos explícitos",
+      "Definir máximo 7 pasos verificables"
+    ],
+    "suggestions": [
+      "Usa riesgos top-3 para priorizar pruebas",
+      "Evita pasos vagos como 'mejorar código'",
+      "Conecta cada paso con un artefacto verificable"
+    ],
+    "improvements": [
+      "Plantilla de plan por tipo de feature",
+      "Checklist de dependencias externas",
+      "Matriz impacto vs esfuerzo para backlog"
+    ],
+    "projectPlayground": [
+      {
+        "scenario": "Agregar nueva pantalla",
+        "tweak": "Divide plan en UX, datos, validación y pruebas",
+        "expectedImpact": "Reducción de retrabajo entre frontend/backend"
+      },
+      {
+        "scenario": "Refactor de módulo legado",
+        "tweak": "Incluye baseline de métricas antes/después",
+        "expectedImpact": "Mejor evidencia de mejora real"
+      }
+    ]
+  },
+  {
+    "id": "20",
+    "name": "safe-changes",
+    "category": "execution",
+    "file": ".agents/skills/20-safe-changes/SKILL.md",
+    "lessonId": "m3",
+    "purpose": "Promueve diffs pequeños, checkpoints y rollback para cambios auditables y reversibles.",
+    "pitfall": "Hacer refactors masivos sin checkpoints ni pruebas intermedias.",
+    "whatItDoes": "Reduce riesgo operativo durante implementación con pasos pequeños y validaciones frecuentes.",
+    "whenToUse": "Cuando hay riesgo de romper flujos críticos o cuando colaboran varias personas en paralelo.",
+    "checklist": [
+      "Separar cambios por intención",
+      "Validar pruebas después de cada bloque",
+      "Dejar notas de rollback claras"
+    ],
+    "suggestions": [
+      "Evita mezclar refactor + feature en el mismo commit",
+      "Si el cambio crece, pausa y replantea sub-etapas",
+      "Documenta qué validar manualmente"
+    ],
+    "improvements": [
+      "Checklist de rollout por entorno",
+      "Plantilla de rollback por servicio",
+      "Guardrails automáticos en CI para diffs enormes"
+    ],
+    "projectPlayground": [
+      {
+        "scenario": "Cambio en API pública",
+        "tweak": "Introduce feature flag temporal",
+        "expectedImpact": "Rollback más rápido ante error en producción"
+      },
+      {
+        "scenario": "Rediseño de componentes UI",
+        "tweak": "Migrar por lotes de pantallas",
+        "expectedImpact": "Menor riesgo de romper toda la experiencia"
+      }
+    ]
+  },
+  {
+    "id": "30",
+    "name": "code-review",
+    "category": "quality",
+    "file": ".agents/skills/30-code-review/SKILL.md",
+    "lessonId": "m4",
+    "purpose": "Evalúa corrección, seguridad, mantenibilidad y deuda técnica antes de cerrar el trabajo.",
+    "pitfall": "Revisar solo estilo y olvidar edge cases o impacto en contratos existentes.",
+    "whatItDoes": "Impone una revisión estructurada para detectar defectos que pruebas básicas no cubren.",
+    "whenToUse": "Previo a merge/entrega, especialmente en cambios de lógica o contratos.",
+    "checklist": [
+      "Revisar supuestos de negocio",
+      "Validar manejo de errores y nulos",
+      "Confirmar impacto en seguridad y rendimiento"
+    ],
+    "suggestions": [
+      "Anota observaciones con severidad (alto/medio/bajo)",
+      "Prioriza bugs funcionales sobre estilo",
+      "Incluye evidencia de casos límite revisados"
+    ],
+    "improvements": [
+      "Rubrica de review por dominio",
+      "Plantilla de comentarios accionables",
+      "Métricas de defectos recurrentes por sprint"
+    ],
+    "projectPlayground": [
+      {
+        "scenario": "Pull request de onboarding",
+        "tweak": "Usa checklist didáctico para dev junior",
+        "expectedImpact": "Mejor transferencia de criterios de calidad"
+      },
+      {
+        "scenario": "Refactor de seguridad",
+        "tweak": "Añade review cruzado con foco OWASP",
+        "expectedImpact": "Disminuye riesgos de vulnerabilidades"
+      }
+    ]
+  },
+  {
+    "id": "40",
+    "name": "tests",
+    "category": "quality",
+    "file": ".agents/skills/40-tests/SKILL.md",
+    "lessonId": "m4",
+    "purpose": "Define cobertura de pruebas para happy path, casos límite y fallos esperados.",
+    "pitfall": "Agregar funcionalidad sin pruebas de regresión o sin validar errores controlados.",
+    "whatItDoes": "Construye evidencia objetiva de que el comportamiento nuevo y el existente siguen sanos.",
+    "whenToUse": "En cualquier cambio de comportamiento, bugfix o evolución de contrato.",
+    "checklist": [
+      "Cubrir happy path",
+      "Agregar al menos un caso negativo clave",
+      "Declarar qué quedó manual y por qué"
+    ],
+    "suggestions": [
+      "Evita tests frágiles acoplados a detalles internos",
+      "Prefiere datos de prueba legibles",
+      "Aísla dependencias externas para reducir flakes"
+    ],
+    "improvements": [
+      "Matriz de cobertura por módulo",
+      "Alarmas de regresión en CI",
+      "Paquete de fixtures reutilizables"
+    ],
+    "projectPlayground": [
+      {
+        "scenario": "Nueva regla de negocio",
+        "tweak": "Modela primero casos válidos e inválidos",
+        "expectedImpact": "Menos bugs de borde en producción"
+      },
+      {
+        "scenario": "Bug crítico recurrente",
+        "tweak": "Agregar test de regresión antes del fix",
+        "expectedImpact": "Evita reincidencia del incidente"
+      }
+    ]
+  }
+]

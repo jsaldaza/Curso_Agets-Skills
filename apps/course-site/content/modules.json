@@ -1,0 +1,83 @@
+[
+  {
+    "id": "m0",
+    "order": 0,
+    "title": "Fundamentos de agentes AI",
+    "level": "Beginner",
+    "durationMinutes": 18,
+    "milestone": "Entender qué es un agente y cómo pensar entradas, proceso y salida.",
+    "summary": "Qué es un agente, qué no es, y cómo pensar en entradas/salidas sin jerga técnica."
+  },
+  {
+    "id": "m1",
+    "order": 1,
+    "title": "Skills y responsabilidades",
+    "level": "Beginner",
+    "durationMinutes": 22,
+    "milestone": "Distinguir roles y evitar mezclar planificación, QA y desarrollo.",
+    "summary": "Cómo separar planificación, desarrollo, pruebas y revisión para reducir errores."
+  },
+  {
+    "id": "m2",
+    "order": 2,
+    "title": "Flujo completo del template",
+    "level": "Intermediate",
+    "durationMinutes": 30,
+    "milestone": "Recorrer el workflow oficial de idea a entrega con trazabilidad.",
+    "summary": "Recorrido planner → qa-strategy → dev → reviewer con ejemplos reales del repo."
+  },
+  {
+    "id": "m3",
+    "order": 3,
+    "title": "Skill Lab I (00, 10, 20)",
+    "level": "Intermediate",
+    "durationMinutes": 35,
+    "milestone": "Dominar profile, planning y cambios seguros antes de implementar features complejas.",
+    "summary": "Explicación granular de 00-project-profile, 10-plan-first y 20-safe-changes con ejemplos prácticos."
+  },
+  {
+    "id": "m4",
+    "order": 4,
+    "title": "Skill Lab II (30, 40)",
+    "level": "Advanced",
+    "durationMinutes": 28,
+    "milestone": "Aplicar revisión estructurada y estrategia de testing para cerrar el ciclo de calidad.",
+    "summary": "Explicación detallada de 30-code-review y 40-tests para validar entregas con confianza."
+  },
+  {
+    "id": "m5",
+    "order": 5,
+    "title": "Sesión Meta · Cómo el chat entiende archivos .md",
+    "level": "Advanced",
+    "durationMinutes": 32,
+    "milestone": "Comprender cómo AGENTS.md, SKILL.md e instrucciones guían el comportamiento del agente.",
+    "summary": "Explica de forma práctica cómo el chat prioriza y aplica reglas desde archivos markdown en el workflow."
+  },
+  {
+    "id": "m6",
+    "order": 6,
+    "title": "Arquitectura .agents (roles y skills)",
+    "level": "Advanced",
+    "durationMinutes": 34,
+    "milestone": "Entender cómo se organizan los agentes conceptuales y los skills en la capa .agents.",
+    "summary": "Recorre .agents/*.agent.md, AGENT_MAPPING y skills para explicar propósito, dependencias y uso práctico."
+  },
+  {
+    "id": "m7",
+    "order": 7,
+    "title": "Arquitectura .codex (ejecución runtime)",
+    "level": "Advanced",
+    "durationMinutes": 26,
+    "milestone": "Distinguir capa conceptual vs capa de ejecución y el rol de builder/planner/qa/reviewer/security.",
+    "summary": "Explica .codex/agents/*.toml como configuración runtime y cómo se conecta con la intención definida en .agents."
+  },
+  {
+    "id": "m8",
+    "order": 8,
+    "title": "Markdowns raíz como sistema de gobierno",
+    "level": "Advanced",
+    "durationMinutes": 30,
+    "milestone": "Aplicar AGENTS.md, AGENTS_CHANGELOG, AI_WORKFLOW y SYSTEM_OVERVIEW como marco de decisión estable.",
+    "summary": "Sesión integral sobre documentos raíz del repo y cómo mantener trazabilidad, cambios y seguridad del workflow."
+  }
+]

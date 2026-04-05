@@ -1,0 +1,102 @@
+[
+  {
+    "term": "Agente (Agent)",
+    "definition": "Componente del sistema responsable de una etapa del workflow — planner, dev, reviewer, qa-* — con responsabilidades acotadas y no solapadas."
+  },
+  {
+    "term": "Arquitectura por capas",
+    "definition": "Modelo de organización que divide el repositorio en: Governance → Conceptual → Runtime → Product → Validación, garantizando trazabilidad desde la regla hasta el código."
+  },
+  {
+    "term": "AGENTS.md",
+    "definition": "Documento raíz que define el modelo operativo del repositorio. Es la fuente de verdad más alta; cualquier conflicto se resuelve a su favor."
+  },
+  {
+    "term": "Checklist de verificación",
+    "definition": "Lista de comandos o pasos que se ejecutan para confirmar que un cambio no rompió nada antes de darlo por terminado."
+  },
+  {
+    "term": "Capa conceptual (.agents)",
+    "definition": "Capa que modela roles, responsabilidades y protocolos de cada agente. Los archivos .agent.md y SKILL.md viven aquí."
+  },
+  {
+    "term": "Capa runtime (.codex)",
+    "definition": "Capa que configura cómo se ejecutan los agentes en la práctica. Los archivos .toml definen herramientas disponibles, restricciones y permisos."
+  },
+  {
+    "term": "Coverage (cobertura)",
+    "definition": "Porcentaje de funcionalidades, flujos y casos de error que están cubiertos por pruebas automatizadas."
+  },
+  {
+    "term": "Edge case",
+    "definition": "Caso límite o poco común que puede romper suposiciones del flujo principal. Siempre definido antes de programar."
+  },
+  {
+    "term": "Guardrail",
+    "definition": "Regla de seguridad o control para reducir riesgos durante la ejecución. Puede ser una instrucción en AGENTS.md o una restricción en un .toml."
+  },
+  {
+    "term": "Happy path",
+    "definition": "Flujo esperado cuando todo funciona correctamente y sin errores. Base del QA mínimo."
+  },
+  {
+    "term": "i18n (internacionalización)",
+    "definition": "Práctica de diseñar la aplicación para soportar múltiples idiomas sin reescribir código. Este curso soporta ES/EN."
+  },
+  {
+    "term": "Idempotencia",
+    "definition": "Propiedad de una operación que produce el mismo resultado sin importar cuántas veces se ejecute. Crítica en scripts de CI y configuración."
+  },
+  {
+    "term": "Meta-agente",
+    "definition": "Agente especial (meta) que evalúa si el trabajo está maduro para avanzar. No ejecuta cambios; solo juzga calidad y solidez."
+  },
+  {
+    "term": "Planner",
+    "definition": "Primer agente del workflow. Clarifica la tarea, identifica riesgos y descompone el trabajo antes de tocar código."
+  },
+  {
+    "term": "Prompt",
+    "definition": "Instrucción que das al agente para orientar una tarea concreta. Un buen prompt es explícito, acotado y con contexto verificable."
+  },
+  {
+    "term": "QA (Quality Assurance)",
+    "definition": "Conjunto de prácticas para garantizar que el software funciona como se espera. Incluye estrategia, ejecución, regresión y reportes."
+  },
+  {
+    "term": "Regression",
+    "definition": "Fallo nuevo en funcionalidad existente causado por cambios recientes. Se detecta con pruebas de regresión automatizadas."
+  },
+  {
+    "term": "Reviewer",
+    "definition": "Agente que revisa código ya implementado sin modificarlo. Detecta bugs, edge cases y problemas de mantenibilidad."
+  },
+  {
+    "term": "Rollback",
+    "definition": "Estrategia para revertir cambios cuando una implementación falla. Debe planificarse antes de hacer cambios, no después."
+  },
+  {
+    "term": "SKILL.md",
+    "definition": "Archivo que define capacidades especializadas de un agente: conocimiento de dominio, instrucciones y flujos refinados."
+  },
+  {
+    "term": "Source of truth",
+    "definition": "Documento o artefacto que tiene prioridad oficial cuando hay conflicto de información. Jerarquía: AGENTS.md > .agents/*.md > .codex/*.toml."
+  },
+  {
+    "term": "Test suite",
+    "definition": "Colección organizada de pruebas que cubre unidades, integración y comportamiento end-to-end del sistema."
+  },
+  {
+    "term": "TOML",
+    "definition": "Formato de configuración legible usado en .codex/agents/*.toml para definir herramientas, restricciones y comportamiento de agentes."
+  },
+  {
+    "term": "Trazabilidad",
+    "definition": "Capacidad de seguir el origen de una decisión o cambio desde el requisito hasta el código. Principio central del workflow."
+  },
+  {
+    "term": "Workflow",
+    "definition": "Secuencia oficial de etapas — planner → qa-strategy → dev → qa → reviewer → qa-regression — para construir software con claridad y menos retrabajo."
+  }
+]

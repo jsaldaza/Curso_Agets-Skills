@@ -1,0 +1,139 @@
+{
+  "title": "Final assessment · Skill Labs m3+m4+m5",
+  "description": "Integrate planning, safe execution, review, testing, and markdown governance.",
+  "passScore": 9,
+  "questions": [
+    {
+      "module": "m3",
+      "prompt": "Before editing code on a non-trivial task, what should you do first?",
+      "options": [
+        "Define a plan with scope, risks, and verification",
+        "Change everything at once to save time",
+        "Wait until production fails"
+      ],
+      "correctIndex": 0,
+      "explanation": "Skill 10-plan-first requires explicit planning before relevant code edits."
+    },
+    {
+      "module": "m3",
+      "prompt": "How many steps does the output format of the 10-plan-first skill define?",
+      "options": [
+        "3 steps: goal, plan, rollback",
+        "6 steps: goal, assumptions, plan, files, risks, checklist",
+        "Only 1 step: a task list"
+      ],
+      "correctIndex": 1,
+      "explanation": "The plan-first output format defines 6 mandatory sections to ensure clarity and traceability."
+    },
+    {
+      "module": "m3",
+      "prompt": "Which rule in the 20-safe-changes skill limits the size of each change?",
+      "options": [
+        "One intent per commit; small, verifiable changes",
+        "Large grouped changes to reduce the number of commits",
+        "Only edit CSS files to avoid risk"
+      ],
+      "correctIndex": 0,
+      "explanation": "Safe-changes requires atomic commits: one goal per commit, followed by lint and tests."
+    },
+    {
+      "module": "m4",
+      "prompt": "Which combination best reflects technical quality before closure?",
+      "options": [
+        "Structured code review + happy path and key negative tests",
+        "Only check code formatting",
+        "Skip review if it compiles"
+      ],
+      "correctIndex": 0,
+      "explanation": "Skills 30 and 40 combine deep review with focused testing."
+    },
+    {
+      "module": "m4",
+      "prompt": "The 'reviewer' agent can modify code it reviews to fix bugs it finds.",
+      "options": [
+        "True, that is its primary responsibility",
+        "False, it only analyzes and reports without modifying code",
+        "It depends on the project"
+      ],
+      "correctIndex": 1,
+      "explanation": "AGENTS.md explicitly defines that the reviewer only analyzes and reports. It does not modify code."
+    },
+    {
+      "module": "m4",
+      "prompt": "Which type of test validates that a recent change did not break existing functionality?",
+      "options": [
+        "Unit test",
+        "Integration test",
+        "Regression test"
+      ],
+      "correctIndex": 2,
+      "explanation": "Regression tests verify that new changes did not introduce failures in already-existing functionality."
+    },
+    {
+      "module": "m4",
+      "prompt": "Which agent decides if the work is mature enough to advance to production?",
+      "options": [
+        "dev, because it implemented the code",
+        "meta, which evaluates maturity without modifying anything",
+        "planner, because it defined the original plan"
+      ],
+      "correctIndex": 1,
+      "explanation": "The meta agent is an optional gate that judges readiness and can block progression when important gaps remain."
+    },
+    {
+      "module": "m5",
+      "prompt": "If two markdown files seem to conflict, which principle applies?",
+      "options": [
+        "Use the hierarchy defined in AGENTS.md",
+        "Pick the shortest file",
+        "Ignore markdown and continue"
+      ],
+      "correctIndex": 0,
+      "explanation": "Module m5 emphasizes explicit priority for traceable decisions."
+    },
+    {
+      "module": "m5",
+      "prompt": "What is the correct source-of-truth hierarchy in this repository?",
+      "options": [
+        "README.md → AGENTS.md → .agents/*.md",
+        "AGENTS.md → .agents/*.md → .codex/*.toml",
+        ".codex/*.toml → .agents/*.md → AGENTS.md"
+      ],
+      "correctIndex": 1,
+      "explanation": "The official hierarchy is in AGENTS.md: AGENTS.md always wins, then .agents/*.md, then .codex/*.toml."
+    },
+    {
+      "module": "m5",
+      "prompt": "Which file defines the official workflow and agent order in this repo?",
+      "options": [
+        "package.json",
+        "AGENTS.md",
+        "README.md"
+      ],
+      "correctIndex": 1,
+      "explanation": "AGENTS.md is the root operational document: it defines roles, workflow order, and system business rules."
+    },
+    {
+      "module": "general",
+      "prompt": "The correct order of the official workflow is:",
+      "options": [
+        "dev → planner → qa-strategy → reviewer → qa-regression",
+        "planner → qa-strategy → dev → qa → reviewer → qa-regression",
+        "qa-strategy → dev → planner → reviewer"
+      ],
+      "correctIndex": 1,
+      "explanation": "AGENTS.md defines the order: planner first, then QA strategy, then implementation, then validation and review."
+    },
+    {
+      "module": "general",
+      "prompt": "What is the core principle that justifies never starting with code?",
+      "options": [
+        "Code is hard to write",
+        "Understanding, planning, and validation strategy first reduces rework and increases traceability",
+        "AI tools cannot write code"
+      ],
+      "correctIndex": 1,
+      "explanation": "AGENTS.md's core principle: understanding and plan before code. Avoids costly rework and ensures clarity."
+    }
+  ]
+}

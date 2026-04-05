@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Final Assessment</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <nav class="site-nav" aria-label="Navegación del curso">
+      <div class="site-nav-inner">
+        <a class="site-nav-link site-nav-home" href="/index.html">🏠 Inicio</a>
+        <span class="site-nav-sep" aria-hidden="true">›</span>
+        <a class="site-nav-link" href="/repo-explorer.html">Explorador</a>
+        <span class="site-nav-sep" aria-hidden="true">›</span>
+        <a class="site-nav-link" href="/skills.html">Skill Lab</a>
+        <span class="site-nav-sep" aria-hidden="true">›</span>
+        <a class="site-nav-link" href="/glossary.html">Glosario</a>
+        <span class="site-nav-sep" aria-hidden="true">›</span>
+        <a class="site-nav-link is-active" href="/final-assessment.html">Evaluación</a>
+      </div>
+    </nav>
+    <header class="hero">
+      <a class="link-home" id="assessment-back-home" href="/index.html">← Volver al inicio</a>
+      <p class="badge" id="assessment-badge">Evaluación final</p>
+      <h1 id="assessment-title">Evaluación final · Skill Labs m3+m4+m5</h1>
+      <p id="assessment-subtitle">Valida comprensión integrada de planificación, quality gates y gobernanza .md.</p>
+      <div class="hero-actions">
+        <label for="language-switch" class="module-meta" id="language-label">Idioma</label>
+        <select id="language-switch" class="language-select">
+          <option value="es">Español</option>
+          <option value="en">English</option>
+        </select>
+      </div>
+    </header>
+
+    <main>
+      <section class="panel">
+        <h2 id="assessment-quiz-title">Quiz integrador</h2>
+        <p id="assessment-description"></p>
+        <form id="assessment-form" class="quiz-form"></form>
+      </section>
+    </main>
+
+    <footer>
+      <p id="assessment-footer">Cierre de curso: demuestra criterio, no solo memoria.</p>
+    </footer>
+
+    <script type="module" src="/final-assessment.js"></script>
+  </body>
+</html>

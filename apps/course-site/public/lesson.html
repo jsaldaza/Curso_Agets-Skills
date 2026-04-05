@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title id="lesson-page-title">Lección • Curso de Agentes AI</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <nav class="site-nav" aria-label="Navegación del curso">
+      <div class="site-nav-inner">
+        <a class="site-nav-link site-nav-home" href="/index.html">🏠 Inicio</a>
+        <span class="site-nav-sep" aria-hidden="true">›</span>
+        <a class="site-nav-link" href="/repo-explorer.html">Explorador</a>
+        <span class="site-nav-sep" aria-hidden="true">›</span>
+        <a class="site-nav-link" href="/skills.html">Skill Lab</a>
+        <span class="site-nav-sep" aria-hidden="true">›</span>
+        <a class="site-nav-link" href="/glossary.html">Glosario</a>
+        <span class="site-nav-sep" aria-hidden="true">›</span>
+        <a class="site-nav-link" href="/final-assessment.html">Evaluación</a>
+      </div>
+    </nav>
+    <header class="hero">
+      <a class="link-home" id="lesson-back-home" href="/index.html">← Volver al inicio</a>
+      <p class="badge" id="lesson-badge">Lección guiada</p>
+      <h1 id="lesson-title">Cargando lección...</h1>
+      <p id="lesson-objective"></p>
+      <div class="hero-actions">
+        <label for="language-switch" class="module-meta" id="language-label">Idioma</label>
+        <select id="language-switch" class="language-select">
+          <option value="es">Español</option>
+          <option value="en">English</option>
+        </select>
+        <button id="start-lesson-tour" class="secondary-button" type="button">Recorrido de esta lección</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="panel" id="lesson-content-panel">
+        <h2 id="lesson-content-title">Contenido</h2>
+        <div id="lesson-sections"></div>
+      </section>
+
+      <section class="panel" id="quiz-panel">
+        <h2 id="lesson-quiz-title">Mini quiz</h2>
+        <p id="quiz-intro">Comprueba si entendiste las ideas clave del módulo.</p>
+        <div id="lesson-quiz"></div>
+      </section>
+
+      <section class="panel" id="lesson-next-panel">
+        <h2 id="lesson-next-title">Tu siguiente paso</h2>
+        <p id="completion-status">Aún no marcas esta lección como completada.</p>
+        <button id="complete-lesson-button" class="primary-button" type="button">
+          Marcar lección como completada
+        </button>
+        <div class="lesson-nav" id="lesson-nav"></div>
+      </section>
+    </main>
+
+    <footer>
+      <p id="lesson-footer">Aprender AI paso a paso también es una skill 😄</p>
+    </footer>
+
+    <script type="module" src="/lesson.js"></script>
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+      window.__MERMAID__ = mermaid;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,692 @@
+[
+  {
+    "moduleId": "m0",
+    "title": "Module 0 · AI Agent Fundamentals",
+    "objective": "Understand what an AI agent is, how it processes a task, and how to explain it without jargon.",
+    "quiz": {
+      "description": "Answer these questions to validate you understand the core idea of an agent.",
+      "questions": [
+        {
+          "prompt": "What does an AI agent do more precisely?",
+          "options": [
+            "It guesses without context and outputs magic",
+            "It receives a goal, reasons, and acts with allowed tools",
+            "It only generates images automatically"
+          ],
+          "correctIndex": 1,
+          "explanation": "The core idea is goal + context + reasoning + allowed actions."
+        },
+        {
+          "prompt": "What is the best starting point according to this course?",
+          "options": [
+            "Start coding immediately",
+            "Understand the problem and plan first",
+            "Jump directly to production"
+          ],
+          "correctIndex": 1,
+          "explanation": "The template emphasizes understanding and planning before coding to reduce rework."
+        }
+      ]
+    },
+    "sections": [
+      {
+        "heading": "What is an AI agent?",
+        "paragraphs": [
+          "An AI agent receives a goal, thinks through steps to solve it, and executes allowed actions.",
+          "It is not magic: results improve when you provide clear instructions, context, and quality criteria."
+        ],
+        "bullets": [
+          "Input: goal and context",
+          "Process: reasoning + rules",
+          "Output: verifiable result"
+        ]
+      },
+      {
+        "heading": "Agent anatomy (diagram)",
+        "paragraphs": [
+          "Use this 2D map to understand the minimal pieces of an agent and how they connect."
+        ],
+        "diagram": "flowchart TD\n  U[User] --> I[Instructions]\n  I --> C[Context]\n  C --> R[Reasoning]\n  R --> T[Allowed tools]\n  T --> O[Output]\n  O --> V[Validation]"
+      },
+      {
+        "heading": "Practical work cycle",
+        "paragraphs": [
+          "Good work starts with understanding and planning, not code first.",
+          "This cycle helps you avoid rework and late-stage hard-to-debug failures."
+        ],
+        "diagram": "flowchart LR\n  A[Understand problem] --> B[Plan]\n  B --> C[Implement small]\n  C --> D[Test]\n  D --> E[Review]\n  E --> F{Goal met?}\n  F -- No --> B\n  F -- Yes --> G[Deliver]"
+      }
+    ]
+  },
+  {
+    "moduleId": "m1",
+    "title": "Module 1 · Skills and Responsibilities",
+    "objective": "Separate roles so planning, development, and QA are not mixed.",
+    "quiz": {
+      "description": "Check whether you can distinguish responsibilities between skills.",
+      "questions": [
+        {
+          "prompt": "Which skill focuses on defining coverage and critical cases?",
+          "options": [
+            "planner",
+            "qa-strategy",
+            "reviewer"
+          ],
+          "correctIndex": 1,
+          "explanation": "qa-strategy defines validation coverage across happy path, edge cases, and negatives."
+        },
+        {
+          "prompt": "Which is a clear anti-pattern?",
+          "options": [
+            "Validate before closing an iteration",
+            "Make small, testable changes",
+            "Start coding without a plan"
+          ],
+          "correctIndex": 2,
+          "explanation": "Starting with code breaks the workflow and usually increases risk and rework."
+        }
+      ]
+    },
+    "sections": [
+      {
+        "heading": "Why separate responsibilities",
+        "paragraphs": [
+          "When one flow mixes everything (plan, code, testing, review), errors and rework increase.",
+          "Using role-focused skills improves focus, validation quality, and risk detection."
+        ],
+        "bullets": [
+          "planner: clarifies goal and boundaries",
+          "qa-strategy: defines coverage and critical cases",
+          "dev: implements small, safe changes",
+          "reviewer: analyzes quality and maintainability"
+        ]
+      },
+      {
+        "heading": "Skill interaction (diagram)",
+        "paragraphs": [
+          "This 2D map shows what each role outputs and how the next role consumes it."
+        ],
+        "diagram": "flowchart TB\n  A[planner] -->|Plan + risks| B[qa-strategy]\n  B -->|Coverage + cases| C[dev]\n  C -->|Change + tests| D[reviewer]\n  D -->|Findings| E[qa-regression]\n  E -->|Final status| F[release]"
+      },
+      {
+        "heading": "Anti-patterns to avoid",
+        "paragraphs": [
+          "These common mistakes help you quickly detect broken workflow behavior."
+        ],
+        "bullets": [
+          "Starting with code and no plan",
+          "Skipping validation strategy before implementation",
+          "Large uncheckpointed changes",
+          "Shipping without review evidence"
+        ]
+      },
+      {
+        "heading": "Operational checklist (diagram)",
+        "paragraphs": [
+          "Use this compact flow as a daily execution checklist."
+        ],
+        "diagram": "flowchart LR\n  A[Clear goal] --> B[Short plan]\n  B --> C[QA cases]\n  C --> D[Implementation]\n  D --> E[Tests]\n  E --> F[Review]\n  F --> G[Document and deliver]"
+      }
+    ]
+  },
+  {
+    "moduleId": "m2",
+    "title": "Module 2 · Full Workflow",
+    "objective": "Walk through the template workflow with real examples.",
+    "quiz": {
+      "description": "Validate that you can follow the end-to-end flow without losing traceability.",
+      "questions": [
+        {
+          "prompt": "Which phase comes right after planner in the official flow?",
+          "options": [
+            "qa-strategy",
+            "reviewer",
+            "qa-regression"
+          ],
+          "correctIndex": 0,
+          "explanation": "qa-strategy immediately follows planner to define what to validate before coding."
+        },
+        {
+          "prompt": "What should dev produce so reviewer can evaluate effectively?",
+          "options": [
+            "Working code plus incremental tests",
+            "Only a pretty diagram",
+            "Only open questions"
+          ],
+          "correctIndex": 0,
+          "explanation": "Reviewer needs concrete evidence: implementation plus tests showing behavior."
+        }
+      ]
+    },
+    "sections": [
+      {
+        "heading": "End-to-end execution map",
+        "paragraphs": [
+          "This module connects all parts so you see how an idea becomes a reliable delivery.",
+          "Traceability is key: each phase produces output consumed by the next one."
+        ],
+        "diagram": "flowchart LR\n  A[Requirement] --> B[planner]\n  B --> C[qa-strategy]\n  C --> D[dev]\n  D --> E[qa-functional / qa-api]\n  E --> F[reviewer]\n  F --> G[qa-regression]\n  G --> H[Release candidate]"
+      },
+      {
+        "heading": "Interactive workflow simulator",
+        "paragraphs": [
+          "Use this simulator to walk the process in practice mode. Each step shows actor, action, and output."
+        ],
+        "simulator": {
+          "title": "Simulator: from idea to delivery",
+          "description": "Move step by step to understand handoffs between roles.",
+          "steps": [
+            {
+              "actor": "planner",
+              "action": "Clarifies goal, assumptions, and key risks.",
+              "output": "Validated plan with scope and priorities."
+            },
+            {
+              "actor": "qa-strategy",
+              "action": "Defines coverage: happy path, negatives, and edge cases.",
+              "output": "Validation checklist and critical tests."
+            },
+            {
+              "actor": "dev",
+              "action": "Implements small, verifiable changes.",
+              "output": "Working code + incremental tests."
+            },
+            {
+              "actor": "reviewer",
+              "action": "Evaluates quality, maintainability, and risk.",
+              "output": "Findings and improvement actions."
+            },
+            {
+              "actor": "qa-regression",
+              "action": "Checks that new changes do not break existing behavior.",
+              "output": "Final approval for release."
+            }
+          ]
+        }
+      },
+      {
+        "heading": "Workflow health indicators",
+        "paragraphs": [
+          "These indicators help you know whether the workflow is working in practice."
+        ],
+        "bullets": [
+          "Tests pass before closing an iteration",
+          "Every change has reason and validation evidence",
+          "Documentation reflects implementation",
+          "No phase skipping without justification"
+        ]
+      }
+    ]
+  },
+  {
+    "moduleId": "m3",
+    "title": "Module 3 · Skill Lab I (00, 10, 20)",
+    "objective": "Understand and apply 00-project-profile, 10-plan-first, and 20-safe-changes in detail.",
+    "quiz": {
+      "description": "Check whether you can distinguish the operational purpose of each foundation skill.",
+      "questions": [
+        {
+          "prompt": "What is the main goal of 00-project-profile?",
+          "options": [
+            "Store stack, commands, and constraints context shared by other skills",
+            "Replace all automated tests",
+            "Enforce microservices architecture"
+          ],
+          "correctIndex": 0,
+          "explanation": "00-project-profile is a shared source of truth for stack, commands, and guardrails."
+        },
+        {
+          "prompt": "According to 10-plan-first, what should exist before editing code?",
+          "options": [
+            "A concrete plan with assumptions, risks, files, and verification",
+            "Only a quick intuition",
+            "A massive style refactor"
+          ],
+          "correctIndex": 0,
+          "explanation": "10-plan-first enforces a planning output format before implementation."
+        },
+        {
+          "prompt": "Which anti-pattern does 20-safe-changes avoid?",
+          "options": [
+            "Changing many unrelated files in one shot",
+            "Running incremental validation",
+            "Documenting verification steps"
+          ],
+          "correctIndex": 0,
+          "explanation": "20-safe-changes promotes small scoped diffs with checkpoints to lower risk."
+        }
+      ]
+    },
+    "sections": [
+      {
+        "heading": "Skill 00 · project-profile (overview)",
+        "paragraphs": [
+          "This skill defines baseline project context: identity, stack, commands, constraints, and definition of done.",
+          "Think of it as minimal configuration that prevents inconsistent decisions across agents and workflow stages."
+        ],
+        "bullets": [
+          "Identity: project name, repo type, and domain",
+          "Stack: backend, frontend, validation, CI/CD",
+          "Commands: install, lint, unit/e2e tests, build",
+          "Constraints: dangerous actions and safe zones"
+        ]
+      },
+      {
+        "heading": "Skill 00 · how to fill it correctly",
+        "paragraphs": [
+          "Keep it short and actionable. Do not write essays, write operational decisions.",
+          "If this file is ambiguous, all other skills lose precision in execution and validation."
+        ],
+        "bullets": [
+          "Use commands that really work in the repository",
+          "Declare what should never be changed without asking",
+          "Include secrets policy and measurable DoD",
+          "Update this skill whenever stack changes"
+        ]
+      },
+      {
+        "heading": "Skill 10 · plan-first in action",
+        "paragraphs": [
+          "This skill enforces a plan template before coding: goal, assumptions, plan, files, risks, and checklist.",
+          "Its practical value is auditable reasoning and fewer improvisation mistakes."
+        ],
+        "diagram": "flowchart LR\n  A[Goal] --> B[Assumptions]\n  B --> C[Plan <= 7 steps]\n  C --> D[Files to touch]\n  D --> E[Top 3 risks]\n  E --> F[Verification checklist]"
+      },
+      {
+        "heading": "Skill 20 · safe-changes in action",
+        "paragraphs": [
+          "Once the plan exists, this skill controls execution quality to avoid breaking the system.",
+          "Golden rule: small changes, single intent, frequent validation."
+        ],
+        "bullets": [
+          "Avoid editing unrelated areas",
+          "Run lint/tests on checkpoints",
+          "Always deliver: what changed, how to verify, rollback notes"
+        ]
+      }
+    ]
+  },
+  {
+    "moduleId": "m4",
+    "title": "Module 4 · Skill Lab II (30, 40)",
+    "objective": "Apply structured review and testing strategy to close the quality loop.",
+    "quiz": {
+      "description": "Close the lab by validating code review and testing strategy criteria.",
+      "questions": [
+        {
+          "prompt": "What output does 30-code-review require?",
+          "options": [
+            "Must-fix, nice-to-have, and questions",
+            "Only approve/reject",
+            "Only style comments"
+          ],
+          "correctIndex": 0,
+          "explanation": "Skill 30 requires prioritized findings and explicit open questions."
+        },
+        {
+          "prompt": "In 40-tests, what minimum coverage is required?",
+          "options": [
+            "Happy path and at least one key negative case",
+            "UI tests only",
+            "No automation"
+          ],
+          "correctIndex": 0,
+          "explanation": "40-tests asks for baseline risk coverage with happy path + key negative case."
+        },
+        {
+          "prompt": "Why are 30 + 40 considered quality closure?",
+          "options": [
+            "Because they validate both implementation quality and behavior evidence",
+            "Because they replace planning",
+            "Because they remove documentation needs"
+          ],
+          "correctIndex": 0,
+          "explanation": "Review plus testing give confidence in correctness, security, and maintainability before release."
+        }
+      ]
+    },
+    "sections": [
+      {
+        "heading": "Skill 30 · code-review checklist",
+        "paragraphs": [
+          "This skill standardizes review across 4 axes: correctness, security, maintainability, and tests.",
+          "Its role is not code editing; it is risk detection and quality elevation."
+        ],
+        "bullets": [
+          "Correctness: logic and edge cases",
+          "Security: input validation and secrets handling",
+          "Maintainability: clarity, SRP, duplication",
+          "Tests: changed behavior coverage and flaky risk"
+        ]
+      },
+      {
+        "heading": "Skill 40 · testing strategy",
+        "paragraphs": [
+          "This skill forces conscious test-level selection: unit, integration, or e2e.",
+          "It also requires clarity on what is automated versus manual and why."
+        ],
+        "diagram": "flowchart TD\n  A[Change identified] --> B{Right level?}\n  B -->|Pure logic| C[Unit]\n  B -->|DB/API boundaries| D[Integration]\n  B -->|User flow| E[E2E]\n  C --> F[Happy + negative]\n  D --> F\n  E --> F\n  F --> G[Flaky risk + mitigation]"
+      },
+      {
+        "heading": "Integrating 30 + 40 in the workflow",
+        "paragraphs": [
+          "In this template, technical and behavioral validation after implementation is not optional.",
+          "30 and 40 provide a shared language to decide if work is truly ready to move forward."
+        ],
+        "bullets": [
+          "Open must-fix items block closure",
+          "No test evidence means no confidence",
+          "Critical uncertainties are captured as explicit questions"
+        ]
+      }
+    ]
+  },
+  {
+    "moduleId": "m5",
+    "title": "Module 5 · Meta Session: how chat interprets .md files",
+    "objective": "Understand how repository markdown files influence decisions, execution order, and agent behavior.",
+    "quiz": {
+      "description": "Validate your understanding of markdown file hierarchy and workflow roles.",
+      "questions": [
+        {
+          "prompt": "If documentation conflicts, which file wins according to AGENTS.md?",
+          "options": [
+            "AGENTS.md as the main source of truth",
+            "Any SKILL.md",
+            "README.md always"
+          ],
+          "correctIndex": 0,
+          "explanation": "AGENTS.md explicitly defines priority and acts as the operational source of truth."
+        },
+        {
+          "prompt": "What is the role of a SKILL.md file?",
+          "options": [
+            "Provide specialized guidance for a task type",
+            "Replace all project logic",
+            "Remove the need for tests"
+          ],
+          "correctIndex": 0,
+          "explanation": "A skill encapsulates practical best practices for specific scenarios (planning, testing, review, etc.)."
+        },
+        {
+          "prompt": "How does chat interact with these .md files in practice?",
+          "options": [
+            "It reads them as rules/context and decides actions by priority and scope",
+            "It ignores them if source code exists",
+            "It only uses them at task completion"
+          ],
+          "correctIndex": 0,
+          "explanation": "The chat uses markdown guidance as normative context for planning, execution, and validation."
+        }
+      ]
+    },
+    "sections": [
+      {
+        "heading": "Map of .md files in this repository",
+        "paragraphs": [
+          "Not all markdown files serve the same purpose. Some explain concepts, others govern agent behavior.",
+          "In this template, AGENTS.md, AI_WORKFLOW.md, SYSTEM_OVERVIEW.md, and SKILL.md are the core process layer."
+        ],
+        "bullets": [
+          "AGENTS.md: operational model and priority",
+          "AI_WORKFLOW.md: phase explanation",
+          "SYSTEM_OVERVIEW.md: high-level map",
+          "SKILL.md: specialized execution recipes"
+        ]
+      },
+      {
+        "heading": "Hierarchy and conflict resolution",
+        "paragraphs": [
+          "When two instructions conflict, the agent should not improvise: it applies explicit priority order.",
+          "This avoids arbitrary behavior and makes decision paths auditable."
+        ],
+        "diagram": "flowchart TD\n  A[System/Developer rules] --> B[AGENTS.md]\n  B --> C[.agents/*.md]\n  C --> D[.codex/agents/*.toml]\n  D --> E[Task execution]\n  E --> F[Validation + reporting]"
+      },
+      {
+        "heading": "How chat uses SKILL.md live",
+        "paragraphs": [
+          "Before acting, the agent identifies relevant skills and loads them.",
+          "Then it adapts plan and output format based on that skill (e.g., plan-first, tests, safe-changes)."
+        ],
+        "bullets": [
+          "Detect relevant skill by task intent",
+          "Read SKILL.md before editing",
+          "Execute steps using skill guardrails",
+          "Validate output with required checklist"
+        ]
+      },
+      {
+        "heading": "Practical case: from prompt to action",
+        "paragraphs": [
+          "When you ask “continue building the course”, chat does more than write text: it first decides applicable rules.",
+          "With that context, it plans, edits files, runs tests, and reports evidence."
+        ],
+        "diagram": "sequenceDiagram\n  participant U as User\n  participant C as Chat\n  participant M as Markdown rules\n  participant F as Files/Tests\n  U->>C: Request\n  C->>M: Load AGENTS + SKILL\n  M-->>C: Rules and workflow\n  C->>F: Edit and validate\n  F-->>C: Results\n  C-->>U: Summary + verification"
+      }
+    ]
+  },
+  {
+    "moduleId": "m6",
+    "title": "Module 6 · .agents layer: roles and skills",
+    "objective": "Understand .agents as the conceptual workflow layer and how agents, mapping, and skills connect.",
+    "quiz": {
+      "description": "Validate your understanding of .agents purpose and relationship with the official flow.",
+      "questions": [
+        {
+          "prompt": "What does the .agents folder primarily represent?",
+          "options": [
+            "Conceptual role and responsibility definitions",
+            "Deployment scripts only",
+            "Frontend build assets"
+          ],
+          "correctIndex": 0,
+          "explanation": ".agents describes the operational model: who does what and when."
+        },
+        {
+          "prompt": "What is AGENT_MAPPING.md used for?",
+          "options": [
+            "Map conceptual agents to runtime execution configuration",
+            "Store API keys",
+            "Replace AGENTS.md"
+          ],
+          "correctIndex": 0,
+          "explanation": "The mapping bridges conceptual intent and runtime layer."
+        },
+        {
+          "prompt": "Which statement about SKILL.md is correct?",
+          "options": [
+            "It defines specialized protocols for concrete task types",
+            "It is decorative documentation only",
+            "It does not affect agent decisions"
+          ],
+          "correctIndex": 0,
+          "explanation": "Skills guide practical execution through guardrails and checklists."
+        }
+      ]
+    },
+    "sections": [
+      {
+        "heading": "What lives inside .agents",
+        "paragraphs": [
+          "The .agents folder defines the conceptual map: roles, boundaries, and responsibilities across phases.",
+          "It includes files like planner.agent.md, dev.agent.md, qa-*.agent.md, reviewer.agent.md, and meta.agent.md."
+        ],
+        "bullets": [
+          ".agent.md files: expected behavior per role",
+          "AGENT_MAPPING.md: concept ↔ runtime bridge",
+          "skills/*/SKILL.md: specialized protocols by intent"
+        ]
+      },
+      {
+        "heading": "Role sequence in .agents",
+        "paragraphs": [
+          "Roles are not decorative: ordering prevents responsibility mixing and minimizes rework."
+        ],
+        "diagram": "flowchart LR\n  A[planner.agent.md] --> B[qa-strategy.agent.md]\n  B --> C[dev.agent.md]\n  C --> D[qa-functional / qa-api]\n  D --> E[reviewer.agent.md]\n  E --> F[qa-regression.agent.md]\n  F --> G[meta/security optional]"
+      },
+      {
+        "heading": "Core skills in .agents/skills",
+        "paragraphs": [
+          "Each skill contributes a concrete workflow piece, such as plan-first or safe-changes.",
+          "Think of skills as reusable micro-protocols that an agent loads by task context."
+        ],
+        "bullets": [
+          "00-project-profile: baseline context",
+          "10-plan-first: verifiable planning",
+          "20-safe-changes: safe execution",
+          "30-code-review and 40-tests: quality closure"
+        ]
+      }
+    ]
+  },
+  {
+    "moduleId": "m7",
+    "title": "Module 7 · .codex layer: runtime configuration",
+    "objective": "Distinguish runtime layer (.codex/agents/*.toml) and how it materializes conceptual design.",
+    "quiz": {
+      "description": "Check that you can separate conceptual intent from execution configuration.",
+      "questions": [
+        {
+          "prompt": "What kind of files live in .codex/agents?",
+          "options": [
+            "Runtime .toml agent configurations",
+            "Training videos",
+            "Markdown docs only"
+          ],
+          "correctIndex": 0,
+          "explanation": "The .codex/agents folder contains runtime configuration per agent."
+        },
+        {
+          "prompt": "builder.toml is mainly associated with:",
+          "options": [
+            "Technical build/execution behavior",
+            "Visual design only",
+            "End-user account management"
+          ],
+          "correctIndex": 0,
+          "explanation": "builder reflects implementation/runtime behavior."
+        },
+        {
+          "prompt": "If you want to change role responsibilities, where should you start?",
+          "options": [
+            "In .agents (conceptual layer)",
+            "Only in .codex",
+            "Directly in e2e tests"
+          ],
+          "correctIndex": 0,
+          "explanation": "Intent should be defined in .agents first and then reflected in .codex."
+        }
+      ]
+    },
+    "sections": [
+      {
+        "heading": "What .codex solves",
+        "paragraphs": [
+          "While .agents says what should happen, .codex defines how that runs at runtime.",
+          "It is the operational translation of conceptual design into executable configuration."
+        ],
+        "bullets": [
+          "planner.toml",
+          "builder.toml",
+          "qa.toml",
+          "reviewer.toml",
+          "security.toml"
+        ]
+      },
+      {
+        "heading": "Bridge between layers",
+        "paragraphs": [
+          "A robust architecture separates intent from runtime to simplify maintenance and evolution."
+        ],
+        "diagram": "flowchart TD\n  A[.agents/*.md (intent)] --> B[AGENT_MAPPING.md]\n  B --> C[.codex/agents/*.toml (runtime)]\n  C --> D[Observable behavior]\n  D --> E[Validation and tests]"
+      },
+      {
+        "heading": "Best practices when editing .codex",
+        "paragraphs": [
+          "Avoid runtime edits without conceptual impact validation first.",
+          "Any change here should include traceability and verification evidence."
+        ],
+        "bullets": [
+          "Align changes with AGENTS.md and .agents",
+          "Document rationale in AGENTS_CHANGELOG.md",
+          "Run tests/regression after updates"
+        ]
+      }
+    ]
+  },
+  {
+    "moduleId": "m8",
+    "title": "Module 8 · Root markdowns and workflow governance",
+    "objective": "Understand how root markdown files coordinate rules, safety, and project traceability.",
+    "quiz": {
+      "description": "Validate mastery of AGENTS.md, AGENTS_CHANGELOG.md, and other root markdown roles.",
+      "questions": [
+        {
+          "prompt": "Which document wins in instruction conflicts?",
+          "options": [
+            "AGENTS.md",
+            "README.md",
+            "SECURITY.md"
+          ],
+          "correctIndex": 0,
+          "explanation": "AGENTS.md explicitly defines decision hierarchy."
+        },
+        {
+          "prompt": "What is AGENTS_CHANGELOG.md used for?",
+          "options": [
+            "Record notable workflow/template updates",
+            "Store sensitive credentials",
+            "Compile UI assets"
+          ],
+          "correctIndex": 0,
+          "explanation": "It provides operational traceability of key workflow changes."
+        },
+        {
+          "prompt": "What does SECURITY.md contribute in this architecture?",
+          "options": [
+            "Security policy and guardrails",
+            "Replacement for tests",
+            "Course UI definitions"
+          ],
+          "correctIndex": 0,
+          "explanation": "SECURITY.md defines risk-reduction practices and unsafe-pattern guardrails."
+        }
+      ]
+    },
+    "sections": [
+      {
+        "heading": "Root markdown governance map",
+        "paragraphs": [
+          "The repository root concentrates governance documents for the full system.",
+          "Reading them in the right order accelerates onboarding and prevents contradictory decisions."
+        ],
+        "bullets": [
+          "AGENTS.md: official operating model",
+          "AGENTS_CHANGELOG.md: workflow/template update history",
+          "AI_WORKFLOW.md and SYSTEM_OVERVIEW.md: functional guide and system map",
+          "README.md and SECURITY.md: technical entry point and policy guardrails"
+        ]
+      },
+      {
+        "heading": "Recommended incremental path for new users",
+        "paragraphs": [
+          "This sequence gives progressive context without overwhelming first-time readers."
+        ],
+        "diagram": "flowchart LR\n  A[README.md] --> B[SYSTEM_OVERVIEW.md]\n  B --> C[AI_WORKFLOW.md]\n  C --> D[AGENTS.md]\n  D --> E[.agents + skills]\n  E --> F[.codex runtime]\n  F --> G[AGENTS_CHANGELOG.md]"
+      },
+      {
+        "heading": "Governance checklist for future iterations",
+        "paragraphs": [
+          "As the project grows, documentation discipline reduces knowledge debt.",
+          "Use this checklist on every workflow release."
+        ],
+        "bullets": [
+          "Update source-of-truth markdowns if rules change",
+          "Record notable changes in AGENTS_CHANGELOG.md",
+          "Verify consistency across .agents, .codex, and tests",
+          "Keep language simple for onboarding"
+        ]
+      }
+    ]
+  }
+]
